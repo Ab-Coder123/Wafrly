@@ -1,0 +1,13 @@
+/* DarkModeToggle.module.css */
+.button {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #edf2f7; /* Light mode default */
+    color: #2d3748; /* Light mode default */
+  }
+  
+  .dark .button {
+    background-color: #2d3748; /* Dark mode */
+    color: #f7fafc; /* Dark mode */
+  }
+  
