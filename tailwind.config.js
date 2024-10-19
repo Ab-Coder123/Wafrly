@@ -9,6 +9,9 @@ module.exports = {
       fontFamily: {
         cairo: ['Cairo', 'sans-serif'],
       },
+      extend: {
+        backgroundColor: ['checked'],
+      },
     },
   },
   plugins: [

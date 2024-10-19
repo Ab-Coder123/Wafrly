@@ -6,6 +6,8 @@ import Signup from './modules/SignUp/Signup';
 // style
 import '../src/App.css'
 import Paying from './modules/Paying/Paying';
+import WhoWe from './modules/WhoWe/WhoWe';
+import Filterproduct from './modules/FilterProduct/Filterproduct';
 function App() {
   // تعريف الرواتر
   const router = createBrowserRouter([
@@ -22,13 +24,20 @@ function App() {
       element: <Signup /> ,
     } ,
     
-  
+    
     {
       path : '/modules/Paying/Paying' , 
       element: <Paying/> ,
     },
     
-
+    {
+      path : '/modules/WhoWe/WhoWe' , 
+      element: <WhoWe/> ,
+    },
+    {
+      path : '/modules/FilterProduct/Filterproduct'  , 
+      element: <Filterproduct/> ,
+    },
   ]);
 
 

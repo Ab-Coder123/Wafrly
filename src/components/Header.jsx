@@ -1,7 +1,7 @@
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import slideimg from '../assets/Images/sildimg.png'
+import slideimg from '../assets/Images/New folder/sildimg.png'
 import PropTypes from "prop-types";
 import {sidedata} from "../Constant/index";
 import { Link } from "react-router-dom";

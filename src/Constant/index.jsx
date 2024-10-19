@@ -46,30 +46,30 @@ const sidedata = [
 
 
 const Products = [
- 
+
   {
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct1,
-    span1 : 'نسبة التسويق 7,00 ' ,
-    span2 : ' 199.99'
+    span1: 'نسبة التسويق 7,00 ',
+    span2: ' 199.99'
   },
   {
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct2,
-    span1 : 'نسبة التسويق 7,00 ' ,
-    span2 : ' 199.99'
+    span1: 'نسبة التسويق 7,00 ',
+    span2: ' 199.99'
   },
   {
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct1,
-    span1 : 'نسبة التسويق 7,00 ' ,
-    span2 : ' 199.99'
+    span1: 'نسبة التسويق 7,00 ',
+    span2: ' 199.99'
   },
   {
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct2,
-    span1 : 'نسبة التسويق 7,00  ' ,
-    span2 : ' 199.99'
+    span1: 'نسبة التسويق 7,00  ',
+    span2: ' 199.99'
   },
 
 ];
@@ -107,113 +107,246 @@ const Section = [
 ];
 
 
-const Bannerdatas= [
+const Bannerdatas = [
   {
-    id: '1' ,
-    imgbanner : imgs.imgBanner ,
-    span : 'اسم الفئة التابع لها المنتج' ,
-    head : 'تعزيز تجربة الموسيقى الخاصة بك' , 
-    button : 'اشتري الأن' ,
+    id: '1',
+    imgbanner: imgs.imgBanner,
+    span: 'اسم الفئة التابع لها المنتج',
+    head: 'تعزيز تجربة الموسيقى الخاصة بك',
+    button: 'اشتري الأن',
   }
-] ;
+];
 
 const NewsProducts = [
   {
-    id:'1' ,
-    head: 'بلايستيشن 5' ,
-    prah : ' وصف عن المنتج المعروض' ,
-    btn : 'طلب الان' ,
-   
-    img : imgs.NewsProduct1 ,
-  } ,
+    id: '1',
+    head: 'بلايستيشن 5',
+    prah: ' وصف عن المنتج المعروض',
+    btn: 'طلب الان',
+
+    img: imgs.NewsProduct1,
+  },
 
   {
-    id:'2' ,
-    head: 'بلايستيشن 5' ,
-    prah : ' وصف عن المنتج المعروض' ,
-    btn : 'طلب الان' ,
-   
-    img : imgs.NewsProduct2 ,
-  } ,
+    id: '2',
+    head: 'بلايستيشن 5',
+    prah: ' وصف عن المنتج المعروض',
+    btn: 'طلب الان',
+
+    img: imgs.NewsProduct2,
+  },
 
   {
-    id:'3' ,
-    head: 'بلايستيشن 5' ,
-    prah : ' وصف عن المنتج المعروض' ,
-    btn : 'طلب الان' ,
-   
-    img : imgs.NewsProduct3 ,
-  } ,
+    id: '3',
+    head: 'بلايستيشن 5',
+    prah: ' وصف عن المنتج المعروض',
+    btn: 'طلب الان',
+
+    img: imgs.NewsProduct3,
+  },
 
   {
-    id:'4' ,
-    head: 'بلايستيشن 5' ,
-    prah : ' وصف عن المنتج المعروض' ,
-    btn : 'طلب الان' ,
-    img : imgs.NewsProduct4 ,
+    id: '4',
+    head: 'بلايستيشن 5',
+    prah: ' وصف عن المنتج المعروض',
+    btn: 'طلب الان',
+    img: imgs.NewsProduct4,
   }
 ]
 
 
 const SidePay = [
   {
-    id:'1' ,
-    img:imgs.Sideicon1 ,
-    head : 'حسابي '
-  } , 
+    id: '1',
+    img: imgs.Sideicon1,
+    head: 'حسابي '
+  },
   {
-    id:'2' ,
-    img:imgs.Sideicon2 ,
-    head : 'طلباتي '
-  } ,
+    id: '2',
+    img: imgs.Sideicon2,
+    head: 'طلباتي '
+  },
   {
-    id:'3' ,
-    img:imgs.Sideicon3 ,
-    head : 'نسبة الأرباح '
-  } ,
+    id: '3',
+    img: imgs.Sideicon3,
+    head: 'نسبة الأرباح '
+  },
   {
-    id:'4' ,
-    img:imgs.Sideicon4 ,
-    head : 'الإشتراكات '
-  } ,
+    id: '4',
+    img: imgs.Sideicon4,
+    head: 'الإشتراكات '
+  },
   {
-    id:'5' ,
-    img:imgs.Sideicon6 ,
-    head : 'المحفظة '
-  } ,
+    id: '5',
+    img: imgs.Sideicon6,
+    head: 'المحفظة '
+  },
   {
-    id:'6' ,
-    img:imgs.Sideicon5 ,
-    head : 'تسجيل خروج '
-  } ,
+    id: '6',
+    img: imgs.Sideicon5,
+    head: 'تسجيل خروج '
+  },
 ]
 
 const SidePay2 = [
   {
-      img : imgs.Coin ,
-      span : 'الرصيد الحالي ' , 
-      head : '$ 50,000' ,
-      ask1 : 'طلبات السحب ' ,
-      ask2 : 'طلبات الايداع' , 
-      spanask1 : 'طرق الدفع الرئيسيه' ,
-      btn : 'طلبات سحب'  ,
-  } ,
+    img: imgs.Coin,
+    span: 'الرصيد الحالي ',
+    head: '$ 50,000',
+    ask1: 'طلبات السحب ',
+    ask2: 'طلبات الايداع',
+    spanask1: 'طرق الدفع الرئيسيه',
+    btn: 'طلبات سحب',
+  },
 
 ]
 
 const Optionpay = [
+
   {
-    id : '1' ,
-    opt : 'اكثر الطرق دفع' , 
-  } ,
+    id: '2',
+    opt: 'تحويل بنكي ',
+  },
   {
-    id : '2' ,
-    opt : 'تحويل بنكي ' , 
-  } ,
-  {
-    id : '3' ,
-    opt : ' Cash ' , 
-  } ,
+    id: '3',
+    opt: ' Cash ',
+  },
 
 ]
-export  {sidedata , Products , Section, Bannerdatas , Optionpay , NewsProducts , SidePay , SidePay2};
+
+
+const OperationsData = [
+  {
+    id: '1',
+    date: 'Sat. 2 Sep 2024',
+    change: '+68.3%',
+    changeColor: 'green',
+    changebg: 'red',
+    name: 'تحويل من محفظه الهاتف',
+    accountNumber: '(W-24-09-02-7882)',
+    imgoperation: imgs.export1, // First image
+  },
+  {
+    id: '2',
+    date: 'Sat. 2 Sep 2024',
+    change: '-16.8%',
+    changeColor: 'red',
+    changebg: 'gray',
+    name: 'cash',
+    accountNumber: '(W-24-09-02-5187)',
+    imgoperation: imgs.export2, // Second image
+  },
+  {
+    id: '3',
+    date: 'Sat. 2 Sep 2024',
+    change: '+68.3%',
+    changeColor: 'green',
+    changebg: 'red',
+    name: 'تحويل من محفظه الهاتف',
+    accountNumber: '(W-24-09-02-8325)',
+    imgoperation: imgs.export1, // First image
+  },
+  {
+    id: '4',
+    date: 'Sat. 2 Sep 2024',
+    change: '+68.3%',
+    changeColor: 'green',
+    changebg: 'red',
+    name: 'تحويل من محفظه الهاتف',
+    accountNumber: '(W-24-09-02-9751)',
+    imgoperation: imgs.export1, // First image
+  },
+  {
+    id: '5',
+    date: 'Sat. 2 Sep 2024',
+    change: '-16.8%',
+    changeColor: 'red',
+    changebg: 'gray',
+    name: 'تحويل بنكى',
+    accountNumber: '(W-24-09-02-2273)',
+    imgoperation: imgs.export2, // Second image
+  },
+  {
+    id: '6',
+    date: 'Sat. 2 Sep 2024',
+    change: '-16.8%',
+    changeColor: 'red',
+    changebg: 'gray',
+    name: 'تحويل بنكى',
+    accountNumber: '(W-24-09-02-1377)',
+    imgoperation: imgs.export2, // Second image
+  },
+  {
+    id: '7',
+    date: 'Sat. 2 Sep 2024',
+    change: '+68.3%',
+    changeColor: 'green',
+    changebg: 'red',
+    name: 'الفواتير',
+    accountNumber: '(W-24-09-02-8767)',
+    imgoperation: imgs.export1, // First image
+  },
+];
+
+
+const WhoWedatas = [
+  {
+    id: '1',
+    head: 'إنشاء حساب جديد',
+    img: imgs.Logo,
+    praph: 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ',
+
+  },
+
+  {
+    id: '2',
+    head: 'الهدف',
+    img: imgs.Scope,
+    praph: 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ.',
+
+  },
+
+  {
+    id: '3',
+    head: 'الرؤية',
+    img: imgs.Eye,
+    praph: 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ.',
+
+  },
+
+  {
+    id: '4',
+    head: 'فتحي نبيل',
+    img: imgs.person1,
+    praph: 'Fact Checker',
+
+  },
+
+  {
+    id: '5',
+    head: 'زياد أحمد',
+    img: imgs.person2,
+    praph: 'Fact Checker',
+
+  },
+  
+  {
+    id: '6',
+    head: 'دعاء أحمد',
+    img: imgs.person3,
+    praph: 'Fact Checker',
+
+  },
+  {
+    id: '7',
+    head: 'فريق العمل ',
+    img: imgs.team ,
+
+  },
+
+]
+
+
+
+
+export { sidedata, Products, OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };

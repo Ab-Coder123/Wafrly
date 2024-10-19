@@ -22,8 +22,15 @@ import Sideicon4 from './Images/Pay/frame.png' ;
 import Sideicon5 from './Images/Pay/login.png' ;
 import Sideicon6 from './Images/Pay/ticket-expired.png' ;
 import Coin from './Images/Pay/image.png'
-
-
+import export1 from './Images/Pay/export.png' ;
+import export2 from './Images/Pay/export1.png' ;
+import Logo from './Images/New folder/logo (1).png' ;
+import Scope from './Images/New folder/ezgif 3.png' ;
+import Eye from './Images/New folder/ezgif 4.png' ;
+import team from './Images/New folder/ezgif 5 (1).png'
+import person1 from './Images/New folder/unsplash__THUISs23CI.png'
+import person2 from './Images/New folder/unsplash_iEEBWgY_6lA.png'
+import person3 from './Images/New folder/unsplash_Zz5LQe-VSMY.png'
 
 const imgs = {
   imgslide1,
@@ -48,6 +55,16 @@ const imgs = {
   Sideicon5 ,
   Sideicon6 ,
   Coin ,
+  export1 ,
+  export2 ,
+  Logo ,
+  Scope ,
+  Eye ,
+  team ,
+  person1 ,
+  person2 , 
+  person3 ,
+
 };
 
 export default imgs;

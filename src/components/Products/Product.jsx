@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Products } from "../../Constant/index";
 import PropTypes from "prop-types";
 import Slider from "react-slick"; // تأكد من استيراد Slider هنا
-import img1 from "../../assets/Images/Logo (1).png";
+import img1 from "../../assets/Images/New folder/logo (1).png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShareAlt, faStar, faEye, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 
-const Populars = ({ popularproduct }) => {
+ export const Populars = ({ popularproduct }) => {
   const [showIcons, setShowIcons] = useState(false);
 
   const settings = {

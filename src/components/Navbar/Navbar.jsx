@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faShoppingCart, faBell, faPerson, faHeader } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import img1 from "../../assets/Images/Logo.png";
+import img1 from "../../assets/Images/New folder/logo.png";
 import { faAccusoft } from "@fortawesome/free-brands-svg-icons";
 
 
