@@ -5,9 +5,9 @@ import Slider from "react-slick"; // تأكد من استيراد Slider هنا
 import img1 from "../../assets/Images/New folder/logo (1).png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShareAlt, faStar, faEye, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
-const Populars = ({ popularproduct }) => {
+export const ProductCard = ({ popularproduct }) => {
   const [showIcons, setShowIcons] = useState(false);
 
   const settings = {
@@ -48,6 +48,18 @@ const Populars = ({ popularproduct }) => {
               className={`absolute top-5 right-0 flex flex-col items-center gap-4 p-2 pb-4 bg-gray-50 rounded-r-lg transition-transform duration-300 ${showIcons ? ' transtion transition-opacity translate-x-0 ' : ' opacity-0 transition transition-opacity'
                 }`}
             >
+
+              <button
+                onClick={() => {
+                  // يمكنك إضافة وظائف إضافية هنا
+                  console.log('Share clicked');
+                }}
+                className=" hover:text-gray-700"
+              >
+                <FontAwesomeIcon icon={faFacebookF} />
+              </button>
+
+
               <button
                 onClick={() => {
                   // يمكنك إضافة وظائف إضافية هنا
@@ -55,7 +67,7 @@ const Populars = ({ popularproduct }) => {
                 }}
                 className=" hover:text-gray-700"
               >
-                <FontAwesomeIcon icon={faHeart} size="l" />
+                <FontAwesomeIcon icon={faHeart} size="2" />
               </button>
               <button
                 onClick={() => {
@@ -64,17 +76,9 @@ const Populars = ({ popularproduct }) => {
                 }}
                 className=" hover:text-gray-700"
               >
-                <FontAwesomeIcon icon={faShareAlt} size="l" />
+                <FontAwesomeIcon icon={faShareAlt} size="2" />
               </button>
-              <button
-                onClick={() => {
-                  // يمكنك إضافة وظائف إضافية هنا
-                  console.log('Favorite clicked');
-                }}
-                className=" hover:text-gray-700"
-              >
-                <FontAwesomeIcon icon={faStar} size="l" />
-              </button>
+             
               <button
                 onClick={() => {
                   // يمكنك إضافة وظائف إضافية هنا
@@ -82,7 +86,7 @@ const Populars = ({ popularproduct }) => {
                 }}
                 className=" hover:text-gray-700"
               >
-                <FontAwesomeIcon icon={faEye} size="l" />
+                <FontAwesomeIcon icon={faEye} size="2" />
               </button>
             </div>
 
@@ -124,7 +128,7 @@ const Populars = ({ popularproduct }) => {
   );
 };
 
-Populars.propTypes = {
+ProductCard.propTypes = {
   popularproduct: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -148,7 +152,7 @@ const Popproduct = () => {
             احدث المنتجات
           </h2>
         </div>
-        <Populars popularproduct={Products} />
+        <ProductCard popularproduct={Products} />
 
         <div className="flex items-center justify-center py-10">
           <button className="bg-[#C54442]  hover:bg-[#bd413f] p-3 rounded-md text-white font-bold ">مشاهده جميع المنتجات </button>

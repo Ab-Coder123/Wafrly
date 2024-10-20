@@ -214,6 +214,27 @@ const Optionpay = [
 
 ]
 
+const Optionpaybranch = [
+
+  {
+    id: '2',
+    opt2: 'بنك صرافه ',
+  },
+  {
+    id: '3',
+    opt2: ' بنك الاسلامي  ',
+  },
+
+  {
+    id: '3',
+    opt2: ' بنك مصر  ',
+  },
+
+  {
+    id: '3',
+    opt2: ' بنك القاهره  ',
+  },
+]
 
 const OperationsData = [
   {
@@ -346,7 +367,49 @@ const WhoWedatas = [
 
 ]
 
+const UseBouqoutdatas= [
+    {
+      id : '1' ,
+      logo : imgs.Logo ,
+      head : 'الباقة المستخدمة' ,
+      bouqout : '$ 522.12' ,
+      bouqoutimg : imgs.bouqoutimg ,
+      star : imgs.star ,
+      span : 'الباقي المجانية' ,
+      month : '00.00 ر.ل / شهريا' ,
+      prah :  'أصلي مع 1000 منتج من العديد من العلامات التجارية المختلفة في جميع أنحاء العالم. ' ,
+      span2: 'غير محدد' ,
+      btn : 'تجديد' ,
+      head2 : ' باقات آخري' ,
+      prah2 : 'يتيح لك تطبيق وفرلي العديد من الباقات المميزة كل واحدة تتميز عن الاخري في خصائصها .. اختر المناسب لك' ,
+    } ,
+
+
+    {
+      id :'2' ,
+      logo : imgs.Logo ,
+      head : 'باقات آخري' ,
+      prah : 'يتيح لك تطبيق وفرلي العديد من الباقات المميزة كل واحدة تتميز عن الاخري في خصائصها .. اختر المناسب لك' ,
+      // header
+      cardimg1 : imgs.cardimg1 ,
+      cardspan1 : '50.00 ر.ل / شهريا' ,
+      cardprah1 : 'أصلي مع 1000 منتج من العديد من العلامات التجارية المختلفة في جميع أنحاء العالم.' ,
+      progresscard1 : '30 يوم' ,
+      cardhead1 : 'الباقي الفضية' ,
+
+      // card1
+      cardhead2 : 'الباقي الذهبية' ,
+      cardimg2 : imgs.cardimg2 ,
+      cardspan2 : '90.00 ر.ل / شهريا ',
+      cardprah2 : 'أصلي مع 1000 منتج من العديد من العلامات التجارية المختلفة في جميع أنحاء العالم.' ,
+      progresscard2 : '30 يوم' ,
+      cardhead2 : 'الباقي الفضية' ,
+
+    }
+
+]
 
 
 
-export { sidedata, Products, OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
+
+export { sidedata, Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };

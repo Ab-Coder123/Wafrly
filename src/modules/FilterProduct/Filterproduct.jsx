@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Populars } from '../../components/Products/Product';
 import { Products } from '../../Constant';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { ProductCard } from "../../components/PoupularHotel/Pophotel";
 
 const CustomCheckbox = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -20,12 +20,12 @@ const CustomCheckbox = () => {
         className="hidden" // إخفاء الشيك بوكس الافتراضي
       />
       <div
-        className={`w-6 h-6 flex items-center justify-center border-2 border-[#F6DBDB] bg-[#F6DBDB] rounded-lg transition-all duration-2 ${isChecked ? "bg-[#952323] border-[#952323]" : "bg-white"
+        className={`w-6 h-6 flex items-center justify-center border-2 border-[#F6DBDB]  rounded-lg transition-all duration-2 ${isChecked ? "bg-[#952323] border-[#952323]" : "bg-white"
           }`}
       >
         {isChecked && (
           <svg
-            className="w-4 h-4 text-white"
+            className="w-5 h-5 mb-2 mr-1 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="  24 24"
@@ -183,7 +183,7 @@ const Filterproduct = () => {
     <>
       <Navbar />
       <section className='py-12'>
-        <div className='flex flex-col lg:flex-row justify-center gap-10'>
+        <div className='flex flex-col lg:flex-row justify-center lg:gap-5'>
 
 
           <div className='flex flex-col items-start '>
@@ -194,9 +194,9 @@ const Filterproduct = () => {
             <Brands />
           </div>
 
-          <div className='w-[80%]'>
-            <Populars popularproduct={Products} />
-            <Populars popularproduct={Products} />
+          <div className='w-96 lg:w-[80%] '>
+            <ProductCard popularproduct={Products} />
+            <ProductCard popularproduct={Products} />
           </div>
 
         </div>

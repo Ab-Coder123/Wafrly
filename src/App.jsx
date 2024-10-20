@@ -8,6 +8,8 @@ import '../src/App.css'
 import Paying from './modules/Paying/Paying';
 import WhoWe from './modules/WhoWe/WhoWe';
 import Filterproduct from './modules/FilterProduct/Filterproduct';
+import UseBouqout from './modules/UseBouqout/UseBouqout';
+import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 function App() {
   // تعريف الرواتر
   const router = createBrowserRouter([
@@ -37,6 +39,16 @@ function App() {
     {
       path : '/modules/FilterProduct/Filterproduct'  , 
       element: <Filterproduct/> ,
+    },
+
+    {
+      path : '/modules/UseBouqout/UseBouqout'  , 
+      element: <UseBouqout/> ,
+    },
+
+    {
+      path : '/modules/ProductDetailsPage/ProductDetailsPage'  , 
+      element: <ProductDetailsPage/>,
     },
   ]);
 

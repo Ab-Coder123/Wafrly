@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import PropTypes from "prop-types";
 
-import { SidePay, SidePay2, Optionpay, OperationsData } from '../../Constant/index';
+import { SidePay, SidePay2, Optionpay, OperationsData, Optionpaybranch } from '../../Constant/index';
 import Footer from '../../components/Footer/Footer';
 import img1 from '../../assets/Images/New folder/logo (1).png'
 
 
 
-const Payingdata = React.memo(({ PayingdataProp }) => {
+export const Payingdata = React.memo(({ PayingdataProp }) => {
     return (
         <div className='flex flex-col justify-center items-start'>
             <div className='text-base text-gray-300'>
@@ -35,6 +35,18 @@ const Payingdata = React.memo(({ PayingdataProp }) => {
 
 const Payingdata2 = ({ PayingdataProp2 }) => {
     const [tripType, setTripType] = useState('Pay'); // 'one-way' or 'round-trip'
+    const [showOptionData, setShowOptionData] = useState(true); // حالة للتحكم في إظهار مكون Optiondata
+    const [showAnotherComponent, setShowAnotherComponent] = useState(false); // حالة للتحكم في إظهار المكون الثاني
+
+    const handleShowOptionData = () => {
+        setShowOptionData(true);
+        setShowAnotherComponent(false); // إخفاء المكون الثاني إذا تم الضغط على ask1
+    };
+
+    const handleShowAnotherComponent = () => {
+        setShowAnotherComponent(true);
+        setShowOptionData(false); // إخفاء Optiondata إذا تم الضغط على ask2
+    };
 
     return (
         <>
@@ -61,17 +73,22 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
 
                             <div className="border border-solid border-gray-400  rounded-md shadow-md p-1.5 flex mb-4 mt-7 gap-3">
                                 <button
-                                    className={`flex-1 py-2 text-center rounded-md ${tripType === 'Pay' ? 'bg-[#C54442] text-white' : ' bg-gray-200 text-gray-500'}`}
-                                    onClick={() => setTripType('Pay')}
+                                    className={`flex-1 py-2 text-center rounded-md ${tripType === 'Pay' ? 'bg-[#C54442] text-white' : 'bg-gray-200 text-gray-500'}`}
+                                    onClick={() => {
+                                        setTripType('Pay');
+                                        handleShowOptionData();
+                                    }}
                                 >
                                     {payprop2.ask1}
                                 </button>
                                 <button
-                                    className={`flex-1 py-2 text-center rounded-md ${tripType === 'buy' ? 'bg-[#C54442] text-white' : ' bg-gray-200 text-gray-500'}`}
-                                    onClick={() => setTripType('buy')}
+                                    className={`flex-1 py-2 text-center rounded-md ${tripType === 'buy' ? 'bg-[#C54442] text-white' : 'bg-gray-200 text-gray-500'}`}
+                                    onClick={() => {
+                                        setTripType('buy');
+                                        handleShowAnotherComponent();
+                                    }}
                                 >
                                     {payprop2.ask2}
-
                                 </button>
                             </div>
 
@@ -80,11 +97,11 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                                     <div className='bg-[#C54442] w-3 h-8 rounded-sm'></div>
                                     <h2 className='font-bold text-[#C54442]'>طرق الدفع الرئيسيه</h2>
                                 </div>
-                                <div><Optiondata Optdataprop={Optionpay} /></div>
-                            </div>
+                                {showOptionData && <Optiondata Optdataprop={Optionpay} />}
+                                {showAnotherComponent && <AnotherComponent />}                            </div>
 
                             <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
-                                {payprop2.ask1}
+                                طلب
                             </button>
                         </div>
                     </>
@@ -127,19 +144,81 @@ const Optiondata = ({ Optdataprop }) => {
 
                 {/* عرض الـ div إذا تم اختيار أي خيار */}
                 {show && (
-                    <div className="my-5 p-1 shadow shadow-md flex flex-col ">
+                    <div className="my-5 p-1  flex flex-col ">
                         <div className="p-1 flex items-center  gap-3 ">
                             <div className="bg-[#bb110e] w-3 h-8 rounded-sm"></div>
                             <h2 className='font-bold text-[#bb110e]'>طرق الدفع الفرعيه لـ {selectedOption}</h2> {/* عرض الخيار المختار */}
                         </div>
 
+                        <select
+                            name=""
+                            className='cursor-pointer  rounded-md px-3 w-full p-2 focus:border-none shadow-md'
+                            id=""
+                            onChange={handleSelectChange} // نضيف حدث onChange للـ select
+                        >
+                            <option>اكثر الطرق دفع</option>
+                            <Optionpaybranchs Optdataprops={Optionpaybranch} />
+                        </select>
+
+                        {show && (
+                            <div>
+                                <form className='flex items-start gap-4 mt-3 ' action="">
+                                    <div>
+                                        <label htmlFor=""></label>
+                                        <input type="number" className='bg-gray-200 shadow-md border  p-2 rounded-md' placeholder='0' />
+
+                                    </div>
+                                    <div>
+                                        <label htmlFor=""></label>
+                                        <input type="tel" className='bg-gray-200 shadow-md borde w-80 p-2 rounded-md ' placeholder='+20' />
+
+                                    </div>
+
+                                </form>
+                            </div>
+                        )
+
+                        }
+
                     </div>
+
+
+
+
                 )}
             </div>
         </>
     );
 };
 
+
+
+
+const AnotherComponent = () => {
+    return (
+        <div className="my-5 p-1 flex flex-col">
+            <div className="p-1 flex items-center gap-3">
+                <div className="bg-blue-500 w-3 h-8 rounded-sm"></div>
+                <h2 className="font-bold text-blue-500">مكون آخر يظهر عند الضغط على ask2</h2>
+            </div>
+            <p>هذا هو المكون الذي يظهر عند الضغط على ask2.</p>
+        </div>
+    );
+};
+
+
+
+const Optionpaybranchs = ({ Optdataprops }) => {
+    return (
+        <>
+            {Optdataprops.map((optdatabranch) => (
+                <option key={optdatabranch.opt2} value={optdatabranch.opt2}>
+                    {optdatabranch.opt2}
+                </option>
+            ))}
+        </>
+    );
+}
 
 
 
@@ -242,6 +321,7 @@ Optiondata.propTypes = {
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             opt: PropTypes.string.isRequired,
+            opt2: PropTypes.string.isRequired,
 
         })
     ).isRequired,
@@ -253,9 +333,9 @@ const Paying = () => {
         <>
             <Navbar />
             <section className='py-12 font-cairo flex flex-col md:flex-row  justify-around items-start md:items-start gap-4'>
-                    <Payingdata PayingdataProp={SidePay} />
-                    <Payingdata2 PayingdataProp2={SidePay2} />
-                    <Payingdata3 PayingdataProp3={OperationsData} />
+                <Payingdata PayingdataProp={SidePay} />
+                <Payingdata2 PayingdataProp2={SidePay2} />
+                <Payingdata3 PayingdataProp3={OperationsData} />
             </section>
 
 

@@ -31,6 +31,11 @@ import team from './Images/New folder/ezgif 5 (1).png'
 import person1 from './Images/New folder/unsplash__THUISs23CI.png'
 import person2 from './Images/New folder/unsplash_iEEBWgY_6lA.png'
 import person3 from './Images/New folder/unsplash_Zz5LQe-VSMY.png'
+import bouqoutimg from './Images/New folder/bouqout.png'
+import star from './Images/New folder/star.png'
+import cardimg1 from './Images/New folder/Group 4.png'
+import cardimg2 from './Images/New folder/Group 4 (1).png'
+
 
 const imgs = {
   imgslide1,
@@ -64,6 +69,10 @@ const imgs = {
   person1 ,
   person2 , 
   person3 ,
+  star ,
+  bouqoutimg ,
+  cardimg1 ,
+  cardimg2 ,
 
 };
 

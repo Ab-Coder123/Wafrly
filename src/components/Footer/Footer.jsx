@@ -7,7 +7,7 @@ import img1 from "../../assets/Images/New folder/logo (1).png";
 
 const Footer = () => {
   return (
-    <footer className=" font-cairo bg-gray-100 dark:bg-gray-900 dark:text-white text-[#23282D] py-8 shadow-lg">
+    <footer className=" font-cairo bg-gray-100 dark:bg-gray-900 dark:text-white text-[#23282D] py-8 mb-0 shadow-lg">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo and Description */}

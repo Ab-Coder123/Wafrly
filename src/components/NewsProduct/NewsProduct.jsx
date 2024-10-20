@@ -13,7 +13,7 @@ const NewsProductdata = ({ NewsProp }) => {
             <div className='flex justify-center items-start gap-5 mx-auto'>
                 {/* div للعنصر الذي يحمل id = 1 */}
                 {product1 && (
-                    <div className='w-96 rounded-md bg-black text-white overflow-hidden'>
+                    <div className='w-[700px] rounded-md bg-black text-white overflow-hidden'>
                         <div className='z-10'>
                             <img className=' relative top-24 left-1 h-96 object-cover ' src={product1.img} alt="" />
                         </div>
