@@ -5,6 +5,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from "react-router-dom";
 
 const WhoWedata = ({ WhosProp }) => {
     const Whodata1 = WhosProp.find((whosProp) => whosProp.id === '1');

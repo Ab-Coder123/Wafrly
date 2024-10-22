@@ -1,6 +1,7 @@
 import React from 'react';
 import { NewsProducts } from '../../Constant/index';
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const NewsProductdata = ({ NewsProp }) => {
     const product1 = NewsProp.find((newsprop) => newsprop.id === '1');

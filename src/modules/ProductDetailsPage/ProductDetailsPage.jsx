@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { ProductDetailsPagedatapart1, ProductDetailsPagedatapart2, iconstars } from '../../Constant/index';
 import img1 from "../../assets/Images/New folder/logo (1).png"
 import Popproduct from '../../components/PoupularHotel/Pophotel';
+import { Link } from "react-router-dom";
 
 const ProductDetailsPagedatasMain = () => {
   return (

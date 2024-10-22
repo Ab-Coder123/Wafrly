@@ -70,7 +70,7 @@ const Signup = () => {
               <p className="text-gray-400 font-medium">
               لديك حساب بالفعل ؟
               </p>
-              <Link to='' className=" underline text-[#C54442] font-bold">تسجيل الدخول </Link>
+              <Link to='/modules/Login/Login' className=" underline text-[#C54442] font-bold">تسجيل الدخول </Link>
             </div>
            
           </div>

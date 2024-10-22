@@ -6,6 +6,7 @@ import img1 from "../../assets/Images/New folder/logo (1).png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShareAlt, faStar, faEye, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ popularproduct }) => {
   const [showIcons, setShowIcons] = useState(false);
@@ -155,7 +156,9 @@ const Popproduct = () => {
         <ProductCard popularproduct={Products} />
 
         <div className="flex items-center justify-center py-10">
+          <Link to='/modules/FilterProduct/Filterproduct'>
           <button className="bg-[#C54442]  hover:bg-[#bd413f] p-3 rounded-md text-white font-bold ">مشاهده جميع المنتجات </button>
+          </Link>
         </div>
         <div className="my-12 w-[90%] flex mx-auto h-0.5 bg-gray-300"></div>
 

@@ -3,7 +3,7 @@ import { Products } from "../../Constant/index";
 import PropTypes from "prop-types";
 import img1 from "../../assets/Images/New folder/logo (1).png";
 import { ProductCard } from "../PoupularHotel/Pophotel";
-
+import { Link } from "react-router-dom";
 
 
 ProductCard.propTypes = {
@@ -36,7 +36,9 @@ const Product = () => {
 
             {/*  */}
             <div className="">
-              <button className="bg-[#C54442]  hover:bg-[#bd413f] p-3 rounded-md text-white font-bold ">المزيد</button>
+              <Link to='/modules/FilterProduct/Filterproduct'>
+                <button className="bg-[#C54442]  hover:bg-[#bd413f] p-3 rounded-md text-white font-bold ">المزيد</button>
+              </Link>
             </div>
 
           </div>

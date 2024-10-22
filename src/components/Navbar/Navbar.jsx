@@ -61,13 +61,13 @@ const Navbar = () => {
             </div>
             <div className="hidden lg:flex flex flex-row  ">
               <button className="px-2 font-bold  text-[#C54442]   dark:hover:text-[#99302e] hover:text-[#99302e] hover:-translate-y-1 transition-all duration-300 md:px-4 py-1 md:py-2">
-                الرئيسية
+                <Link to='/'>الرئسيه</Link>
               </button>
               <button className="px-2 font-bold text-black   dark:hover:text-[#99302e] hover:text-[#99302e] hover:-translate-y-1 transition-all duration-300 md:px-4 py-1 md:py-2">
-                <Link to="/modules/Hotel/Hotel">تواصل معنا</Link>
+                <Link to="">تواصل معنا</Link>
               </button>
               <button className="px-2 font-bold  text-black   dark:hover:text-[#99302e] hover:text-[#99302e] hover:-translate-y-1 transition-all duration-300 md:px-4 py-1 md:py-2">
-                <Link to="/modules/Categories/Categorybuy">من نحن</Link>
+                <Link to="/modules/WhoWe/WhoWe">من نحن</Link>
               </button>
             </div>
           </div>
