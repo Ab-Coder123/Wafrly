@@ -10,11 +10,16 @@ import { Link } from "react-router-dom";
 const ProductDetailsPagedatasMain = () => {
   return (
     <>
+      <div>
       <section className=' font-cairo py-10 flex flex-col items-start justify-start gap-y-5'>
         <ProductDetailsPagedataspart1 ProductDetailsPagedataspart1Prop={ProductDetailsPagedatapart1} />
         <ProductDetailsPagedataspart2 ProductDetailsPagedataspart2Prop={ProductDetailsPagedatapart2} />
       </section>
+
       <Popproduct/>
+
+      </div>
+ 
 
     </>
   );

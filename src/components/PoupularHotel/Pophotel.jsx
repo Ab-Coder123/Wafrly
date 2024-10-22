@@ -79,7 +79,7 @@ export const ProductCard = ({ popularproduct }) => {
               >
                 <FontAwesomeIcon icon={faShareAlt} size="2" />
               </button>
-             
+
               <button
                 onClick={() => {
                   // يمكنك إضافة وظائف إضافية هنا
@@ -116,9 +116,12 @@ export const ProductCard = ({ popularproduct }) => {
                 <span className="text-[#C54442] font-semibold">${product.span2}</span>
                 <span className="bg-[#061432] p-0.5 px-2 text-white rounded-md">${product.span1}</span>
               </div>
+              <Link to='/modules/ProductDetailsPage/ProductDetailsPage' className="mx-auto">
+                <button className="px-4 py-2 mt-5 text-white transition-colors duration-300 bg-[#C54442] rounded hover:bg-[#af3735]">
+                  أضف الى العربة
+                </button>
+              </Link>
 
-              <button className="px-4 py-2 mt-5 text-white transition-colors duration-300 bg-[#C54442] rounded hover:bg-[#af3735]">
-                أضف الى العربة              </button>
             </div>
 
 
@@ -157,7 +160,7 @@ const Popproduct = () => {
 
         <div className="flex items-center justify-center py-10">
           <Link to='/modules/FilterProduct/Filterproduct'>
-          <button className="bg-[#C54442]  hover:bg-[#bd413f] p-3 rounded-md text-white font-bold ">مشاهده جميع المنتجات </button>
+            <button className="bg-[#C54442]  hover:bg-[#bd413f] p-3 rounded-md text-white font-bold ">مشاهده جميع المنتجات </button>
           </Link>
         </div>
         <div className="my-12 w-[90%] flex mx-auto h-0.5 bg-gray-300"></div>
