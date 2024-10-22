@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import PropTypes from "prop-types";
 
-import { SidePay, SidePay2, Optionpay, OperationsData, Optionpaybranch } from '../../Constant/index';
+import { SidePay, SidePay2, Optionpay, OperationsData, Optionpaybranch, OptionDeposit } from '../../Constant/index';
 import Footer from '../../components/Footer/Footer';
 import img1 from '../../assets/Images/New folder/logo (1).png'
-
+import imgmanual from '../../assets/Images/New folder/pngtree-online-transfer-money-with-mobile-banking-design-concept-vector-illustration-png-image_2158421.jpg'
 
 
 export const Payingdata = React.memo(({ PayingdataProp }) => {
@@ -36,7 +36,10 @@ export const Payingdata = React.memo(({ PayingdataProp }) => {
 const Payingdata2 = ({ PayingdataProp2 }) => {
     const [tripType, setTripType] = useState('Pay'); // 'one-way' or 'round-trip'
     const [showOptionData, setShowOptionData] = useState(true); // حالة للتحكم في إظهار مكون Optiondata
-    const [showAnotherComponent, setShowAnotherComponent] = useState(false); // حالة للتحكم في إظهار المكون الثاني
+    const [optionDeposits, setShowAnotherComponent] = useState(false); // حالة للتحكم في إظهار المكون الثاني
+
+
+    // 
 
     const handleShowOptionData = () => {
         setShowOptionData(true);
@@ -93,16 +96,45 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                             </div>
 
                             <div className='flex flex-col '>
-                                <div className=' p-1 flex items-center  gap-3 shadow-md'>
-                                    <div className='bg-[#C54442] w-3 h-8 rounded-sm'></div>
-                                    <h2 className='font-bold text-[#C54442]'>طرق الدفع الرئيسيه</h2>
-                                </div>
-                                {showOptionData && <Optiondata Optdataprop={Optionpay} />}
-                                {showAnotherComponent && <AnotherComponent />}                            </div>
+                                {showOptionData &&
+                                    (
+                                        <div className=' p-1 flex items-center  gap-3 shadow-md'>
+                                            <div className='bg-[#C54442] w-3 h-8 rounded-sm'></div>
+                                            <h2 className='font-bold text-[#C54442]'>طرق الدفع الرئيسيه</h2>
+                                        </div>
+                                    )
+                                }
 
-                            <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
-                                طلب
-                            </button>
+                                {optionDeposits &&
+                                    (
+                                        <div className=' p-1 flex items-center  gap-3 shadow-md'>
+                                            <div className='bg-[#C54442] w-3 h-8 rounded-sm'></div>
+                                            <h2 className='font-bold text-[#C54442]'>طرق الايداع الرئيسيه</h2>
+                                        </div>
+                                    )
+                                }
+
+                                {showOptionData && <Optiondata Optdataprop={Optionpay} />}
+                                {optionDeposits && <OptionDeposits OptdatapropDeposit={OptionDeposit} />}
+                            </div>
+
+
+                            {showOptionData &&
+                                (
+                                    <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
+                                        طلب السحب
+                                    </button>
+                                )
+                            }
+
+                            {optionDeposits &&
+                                (
+                                    <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
+                                        طلب الايداع
+                                    </button>
+                                )
+                            }
+
                         </div>
                     </>
                 )
@@ -193,19 +225,65 @@ const Optiondata = ({ Optdataprop }) => {
 
 
 
+const OptionDeposits = ({ OptdatapropDeposit }) => {
+    const [show, setShow] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("");
+    const [bank, setBank] = useState(false);
+    const [maual, setMaual] = useState(false);
 
-const AnotherComponent = () => {
+    const handleSelectChange = (e) => {
+        const value = e.target.value;
+        setSelectedOption(value);
+        setShow(true);
+
+        // ضبط حالات الخيارات بناءً على الخيار المحدد
+        if (value === 'ايداع بنكي') {
+            setBank(true);
+            setMaual(false);
+        } else if (value === 'ايداع مانيول') {
+            setBank(false);
+            setMaual(true);
+        }
+    };
+
     return (
         <div className="my-5 p-1 flex flex-col">
-            <div className="p-1 flex items-center gap-3">
-                <div className="bg-blue-500 w-3 h-8 rounded-sm"></div>
-                <h2 className="font-bold text-blue-500">مكون آخر يظهر عند الضغط على ask2</h2>
-            </div>
-            <p>هذا هو المكون الذي يظهر عند الضغط على ask2.</p>
+            <select
+                className='cursor-pointer bg-gray-300 rounded-md px-3 w-full p-2 focus:border-none shadow-md'
+                onChange={handleSelectChange}
+            >
+                <option>اكثر الطرق الايداع</option>
+                {OptdatapropDeposit.map((optdataDeposit) => (
+                    <option key={optdataDeposit.id} value={optdataDeposit.opt}>
+                        {optdataDeposit.opt}
+                    </option>
+                ))}
+            </select>
+
+            {show && (
+                <div className="my-5 p-1 flex flex-col">
+                    <h2 className='font-bold text-[#bb110e]'>طرق الدفع الفرعيه لـ {selectedOption}</h2>
+
+                    {bank && (
+                        <div>
+                            <form className='flex items-start gap-4 mt-3'>
+                                <input type="number" className='bg-gray-200 shadow-md border p-2 rounded-md' placeholder='0' />
+                                <input type="tel" value='01118682951' className='text-center font-bold bg-gray-200 shadow-md border w-80 p-2 rounded-md' placeholder='+20' />
+                            </form>
+                        </div>
+                    )}
+
+                    {maual && (
+                        <div className='flex flex-col justify-center items-center py-5'>
+                            <input type="number" className='bg-gray-200 shadow-md border p-2 rounded-md' placeholder='0' />
+                            <img src={imgmanual} className='h-80' alt="" />
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };
-
 
 
 const Optionpaybranchs = ({ Optdataprops }) => {
@@ -219,6 +297,8 @@ const Optionpaybranchs = ({ Optdataprops }) => {
         </>
     );
 }
+
+
 
 
 
@@ -322,6 +402,16 @@ Optiondata.propTypes = {
             id: PropTypes.string.isRequired,
             opt: PropTypes.string.isRequired,
             opt2: PropTypes.string.isRequired,
+
+        })
+    ).isRequired,
+};
+
+OptionDeposits.propTypes = {
+    OptdatapropDeposit: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            opt: PropTypes.string.isRequired,
 
         })
     ).isRequired,

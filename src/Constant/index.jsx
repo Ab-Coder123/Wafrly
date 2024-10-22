@@ -214,6 +214,14 @@ const Optionpay = [
 
 ]
 
+
+
+const OptionDeposit = [
+  { id: '2', opt: 'ايداع بنكي' },
+  { id: '3', opt: 'ايداع مانيول' },
+];
+
+
 const Optionpaybranch = [
 
   {
@@ -410,6 +418,91 @@ const UseBouqoutdatas= [
 ]
 
 
+const ProductDetailsPagedatapart1 = [
+      {
+        id : '1' ,
+        img1 : imgs.imgdetail1 ,
+        img2 : imgs.imgdetail2 ,
+        img3 : imgs.imgdetail3 ,
+        img4 : imgs.imgdetail4 ,
+        img5 : imgs.imgdetail5 ,
+      } ,
+
+      {
+        id:'2' ,
+        head : 'لوحة تحكم هافيك HV G-92' ,
+        imgstar : imgs.imgdetailstar4 ,
+        spansalary : '192.00 دولاراً' ,
+        praph : 'غلاف وحدة تحكم بلايستيشن 5 مصنوع من الفينيل عالي الجودة مع لاصق قناة هوائية لسهولة التركيب بدون فقاعات وإزالة خالية من الفوضى، حساس للضغط.' ,
+        spancolor : 'الألوان:' , 
+        button : 'اشتري الآن' ,
+        imgheart :  imgs.imgdetailheart ,
+        card1img : imgs.icondetail1 ,
+        card2img : imgs.icondetail2 ,
+        card1head : 'توصيل مجاني' ,
+        card1praph : 'أدخل الرمز البريدي الخاص بك لتوفر التسليم' ,
+        card2head : 'تسليم العودة' ,
+        card1praph : 'إرجاع مجاني خلال 30 يومًا. تفاصيل'
+      }
+]
 
 
-export { sidedata, Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
+const ProductDetailsPagedatapart2 = [
+  
+  {
+    id: '1',
+    specificationsTitle: 'مواصفات المنتج',
+    specificationsprah : 'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي ' ,
+    detailsTitle: 'تفاصيل الطلب',
+    customerReviewsTitle: 'مراجعات العملاء',
+  },
+ 
+  {
+    id: '2',
+    sectionTitle1: 'مواصفات المنتج',
+    sectionTitle2: 'وصف بسيط للمنتج',
+    reviewsTitle: 'مراجعتك:',
+    noReviewsText: 'لا يوجد أي مراجعات بعد',
+    nameField: 'الاسم',
+    emailField: 'البريد الإلكتروني',
+    reviewPlaceholder: 'اكتب رأيك هنا...',
+    sendButton: 'إرسال',
+    saveInfoText: 'احفظ اسمي وبريدي الإلكتروني، والموقع الإلكتروني في هذا المتصفح لاستخدامها في المرة القادمة التي أعلق فيها.',
+    note: 'يجب عليك تسجيل الدخول لتتمكن من إضافة الحقول أو المراجعة.',
+    iconstar6: imgs.imgdetailstar0 ,
+
+  },
+
+  {
+    id:'3'
+  } ,
+
+];
+
+const iconstars =[
+  {
+    id:'1' ,
+    iconstar: imgs.imgdetailstar1 ,
+  } ,
+  {
+    id:'2' ,
+    iconstar: imgs.imgdetailstar2 ,
+  } ,
+  {
+    id:'3' ,
+    iconstar: imgs.imgdetailstar3 ,
+  } ,
+  {
+    id:'4' ,
+    iconstar: imgs.imgdetailstar4 ,
+  } ,
+  {
+    id:'5' ,
+    iconstar: imgs.imgdetailstar5 ,
+  } ,
+
+]
+
+
+
+export { sidedata,OptionDeposit , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };

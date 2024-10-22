@@ -35,7 +35,21 @@ import bouqoutimg from './Images/New folder/bouqout.png'
 import star from './Images/New folder/star.png'
 import cardimg1 from './Images/New folder/Group 4.png'
 import cardimg2 from './Images/New folder/Group 4 (1).png'
-
+import imgdetail1 from './Images/detailproduct/Frame 894.png'
+import imgdetail2 from './Images/detailproduct/Frame 895.png'
+import imgdetail3 from './Images/detailproduct/Frame 896.png'
+import imgdetail4 from './Images/detailproduct/Frame 897.png'
+import imgdetail5 from './Images/detailproduct/Frame 919.png'
+import imgdetail6 from './Images/detailproduct/Frame 904.png'
+import imgdetailheart from './Images/detailproduct/Frame 904.png'
+import imgdetailstar0 from './Images/detailproduct/Img - Rated 0 out of 5.png'
+import imgdetailstar1 from './Images/detailproduct/Img - Rated 1 out of 5.png'
+import imgdetailstar2 from './Images/detailproduct/Img - Rated 2 out of 5.png'
+import imgdetailstar3 from './Images/detailproduct/Img - Rated 3 out of 5.png'
+import imgdetailstar4 from './Images/detailproduct/Img - Rated 4 out of 5.png'
+import imgdetailstar5 from './Images/detailproduct/Img - Rated 5 out of 5.png'
+import icondetail1 from './Images/detailproduct/icon-delivery.png' 
+import icondetail2 from './Images/detailproduct/Icon-return.png' 
 
 const imgs = {
   imgslide1,
@@ -73,7 +87,22 @@ const imgs = {
   bouqoutimg ,
   cardimg1 ,
   cardimg2 ,
+  imgdetail1 ,
+  imgdetail2 ,
+  imgdetail3 ,
+  imgdetail4 ,
+  imgdetail5 ,
+  imgdetail6 ,
+  imgdetailstar0 ,
+  imgdetailstar1 ,
+  imgdetailstar2 ,
+  imgdetailstar3 ,
+  imgdetailstar4 ,
+  imgdetailstar5 ,
 
+  imgdetailheart , 
+  icondetail2 ,
+  icondetail1 ,
 };
 
 export default imgs;
