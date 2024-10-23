@@ -85,9 +85,9 @@ const Navbar = () => {
             </div>
             <ul className="flex  gap-10 justify-center mt-4 text-lg text-gray-700">
                 <li><Link to=''> <FontAwesomeIcon icon={faHeart} size="x" /> </Link></li>
-                <li><Link to=''> <FontAwesomeIcon icon={faShoppingCart} size="x" /></Link></li>
+                <li><Link to='/modules/Paying/Paying'> <FontAwesomeIcon icon={faShoppingCart} size="x" /></Link></li>
                 <li><Link to=''> <FontAwesomeIcon icon={faBell} size="x" /></Link></li>
-                <li><Link to=''> <FontAwesomeIcon icon={faUser} size="x" /></Link></li>
+                <li><Link to='/modules/SignUp/Signup'> <FontAwesomeIcon icon={faUser} size="x" /></Link></li>
 
               </ul>
           </div>
