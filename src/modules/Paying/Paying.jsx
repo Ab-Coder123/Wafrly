@@ -453,8 +453,6 @@ const Paying = () => {
                 <Payingdata2 PayingdataProp2={SidePay2} />
                 <Payingdata3 PayingdataProp3={OperationsData} />
             </section>
-
-
             <Footer />
         </>
     );
