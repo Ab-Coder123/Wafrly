@@ -1,37 +1,54 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import PropTypes from "prop-types";
-
 import { SidePay, SidePay2, Optionpay, OperationsData, Optionpaybranch, OptionDeposit } from '../../Constant/index';
 import Footer from '../../components/Footer/Footer';
 import img1 from '../../assets/Images/New folder/logo (1).png'
 import imgmanual from '../../assets/Images/New folder/pngtree-online-transfer-money-with-mobile-banking-design-concept-vector-illustration-png-image_2158421.jpg'
+import { Link, useLocation } from 'react-router-dom';
 
 
-export const Payingdata = React.memo(({ PayingdataProp }) => {
+
+export const Payingdata = ({ PayingdataProp }) => {
+    const location = useLocation();
+
     return (
         <div className='flex flex-col justify-center items-start'>
             <div className='text-base text-gray-300'>
                 <span>الرئيسية \ حسابي</span>
             </div>
-            {PayingdataProp.map((payprop) => (
-                <div key={payprop.id} className='p-2 flex items-start'>
-                    <ul className='flex flex-col items-start'>
-                        <li className='flex p-1 gap-3 items-center'>
-                            <img className='bg-gray-500 p-1 rounded-md' src={payprop.img} alt="" />
-                            <h2>{payprop.head}</h2>
-                        </li>
-                    </ul>
-                </div>
-            ))}
+            {PayingdataProp.map((payprop) => {
+                const isActive = location.pathname === payprop.Link;
+
+                return (
+                    <div key={payprop.id} className='p-2 flex items-start'>
+                        <ul className='flex flex-col items-start'>
+                            <Link to={payprop.Link}>
+                                <li
+                                    className={`flex p-1 gap-3 items-center ${isActive ? 'text-red-500' : 'hover:text-red-500 focus:text-red-500'}`}
+                                >
+                                    <img
+                                        className={`p-1 rounded-md ${isActive ? 'bg-red-500' : 'bg-gray-500 hover:bg-red-500 focus:bg-red-500'}`}
+                                        src={payprop.img}
+                                        alt=""
+                                    />
+                                    <h2
+                                        className={`flex p-1 gap-3 items-center ${isActive ? 'text-red-500' : 'hover:text-red-500 focus:text-red-500'}`}
+                                    >{payprop.head}</h2>
+                                </li>
+                            </Link>
+                        </ul>
+                    </div>
+                );
+            })}
             <div>
-                <button className='p-1 rounded-md bg-gray-400 text-white'>
+                <button className='p-1 rounded-md bg-gray-400 text-white hover:text-red-500 focus:text-red-500 active:text-red-500'>
                     تغيير كلمة المرور
                 </button>
             </div>
         </div>
     );
-});
+};
 
 const Payingdata2 = ({ PayingdataProp2 }) => {
     const [tripType, setTripType] = useState('Pay'); // 'one-way' or 'round-trip'
@@ -85,13 +102,16 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                                     {payprop2.ask1}
                                 </button>
                                 <button
-                                    className={`flex-1 py-2 text-center rounded-md ${tripType === 'buy' ? 'bg-[#C54442] text-white' : 'bg-gray-200 text-gray-500'}`}
+                                    className={`flex-1 gap-2 py-2 text-center rounded-md ${tripType === 'buy' ? 'bg-[#C54442] text-white' : 'bg-gray-200 text-gray-500'}`}
                                     onClick={() => {
                                         setTripType('buy');
                                         handleShowAnotherComponent();
                                     }}
                                 >
-                                    {payprop2.ask2}
+                                    <select className="w-full bg-transparent border-none text-center">
+                                        <option className='text-gray-400 ' value="">ايداع إلكتروني</option>
+                                        <option className='text-gray-400 ' value="">ايداع مصرفي</option>
+                                    </select>
                                 </button>
                             </div>
 
@@ -110,6 +130,7 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                                         <div className=' p-1 flex items-center  gap-3 shadow-md'>
                                             <div className='bg-[#C54442] w-3 h-8 rounded-sm'></div>
                                             <h2 className='font-bold text-[#C54442]'>طرق الايداع الرئيسيه</h2>
+
                                         </div>
                                     )
                                 }
@@ -131,6 +152,7 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                                 (
                                     <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
                                         طلب الايداع
+
                                     </button>
                                 )
                             }
@@ -252,7 +274,9 @@ const OptionDeposits = ({ OptdatapropDeposit }) => {
                 className='cursor-pointer bg-gray-300 rounded-md px-3 w-full p-2 focus:border-none shadow-md'
                 onChange={handleSelectChange}
             >
-                <option>اكثر الطرق الايداع</option>
+                <option>
+                    اكثر الطرق الايداع
+                </option>
                 {OptdatapropDeposit.map((optdataDeposit) => (
                     <option key={optdataDeposit.id} value={optdataDeposit.opt}>
                         {optdataDeposit.opt}
@@ -316,7 +340,7 @@ const Payingdata3 = ({ PayingdataProp3 }) => {
 
                     <>
 
-                        <div key={paydata3.id} className="flex items-center justify-between gap-4 bg-white shadow-md p-3 rounded-lg">
+                        <div key={paydata3.id} className="flex items-center justify-between gap-4 bg-white shadow-md p-5 rounded-lg">
 
 
                             {/* Right Section: Operation Image */}
@@ -359,6 +383,8 @@ Payingdata.propTypes = {
             id: PropTypes.string.isRequired,
             img: PropTypes.string.isRequired,
             head: PropTypes.string.isRequired,
+            Link: PropTypes.string.isRequired,
+
         })
     ).isRequired,
 };
@@ -422,7 +448,7 @@ const Paying = () => {
     return (
         <>
             <Navbar />
-            <section className='py-12 font-cairo flex flex-col md:flex-row  justify-around items-start md:items-start gap-4'>
+            <section className='py-12 px-20 font-cairo flex flex-col md:flex-row  justify-around items-start md:items-start gap-4'>
                 <Payingdata PayingdataProp={SidePay} />
                 <Payingdata2 PayingdataProp2={SidePay2} />
                 <Payingdata3 PayingdataProp3={OperationsData} />

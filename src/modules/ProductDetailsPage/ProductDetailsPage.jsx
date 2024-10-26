@@ -201,6 +201,7 @@ const ProductControls = () => {
       </div>
 
       {/* زر اشترِ الآن */}
+      <Link to =''></Link>     
       <button className="bg-red-500 text-white py-2 px-6 rounded-lg hover:bg-red-600">
         اشترِ الآن
       </button>

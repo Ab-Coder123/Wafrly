@@ -10,6 +10,9 @@ import WhoWe from './modules/WhoWe/WhoWe';
 import Filterproduct from './modules/FilterProduct/Filterproduct';
 import UseBouqout from './modules/UseBouqout/UseBouqout';
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
+import Profitratio from './modules/Profitratio/Profitratio';
+import Oeders from './modules/Orders/Oeders';
+import Profit from './modules/Profit/Profit';
 function App() {
   // تعريف الرواتر
   const router = createBrowserRouter([
@@ -49,6 +52,21 @@ function App() {
     {
       path : '/modules/ProductDetailsPage/ProductDetailsPage'  , 
       element: <ProductDetailsPage/>,
+    },
+
+    
+    {
+      path : '/modules/Profitratio/Profitratio'  , 
+      element: <Profitratio />,
+    },
+
+    {
+      path : '/modules/Orders/Oeders'  , 
+      element:<Oeders />,
+    },
+    {
+      path : '/modules/Profit/Profit'  , 
+      element:<Profit/>,
     },
   ]);
 

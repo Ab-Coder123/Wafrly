@@ -159,32 +159,39 @@ const SidePay = [
   {
     id: '1',
     img: imgs.Sideicon1,
-    head: 'حسابي '
+    head: 'حسابي ' ,
+    Link : '/modules/Profitratio/Profitratio' ,
   },
   {
     id: '2',
     img: imgs.Sideicon2,
-    head: 'طلباتي '
+    head: 'طلباتي ' ,
+    Link: '/modules/Orders/Oeders' ,
   },
   {
     id: '3',
     img: imgs.Sideicon3,
-    head: 'نسبة الأرباح '
+    head: 'نسبة الأرباح ' ,
+    Link : '/modules/Profit/Profit' ,
   },
   {
     id: '4',
     img: imgs.Sideicon4,
-    head: 'الإشتراكات '
+    head: 'الإشتراكات ' , 
+    Link : '/modules/UseBouqout/UseBouqout' ,
   },
   {
     id: '5',
     img: imgs.Sideicon6,
-    head: 'المحفظة '
+    head: 'المحفظة ' ,
+    Link : '/modules/Paying/Paying' ,
   },
   {
     id: '6',
     img: imgs.Sideicon5,
-    head: 'تسجيل خروج '
+    head: 'تسجيل خروج '  ,
+    Link : '/'
+
   },
 ]
 
@@ -504,5 +511,152 @@ const iconstars =[
 ]
 
 
+const profiledata = [
+  {
+    id:'1' ,
+    imgprofile : imgs.imgprofile ,
+    backgroundprofile: imgs.backgroundprofile ,
+    changeimg : imgs.changeimg ,
 
-export { sidedata,OptionDeposit , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
+  } ,
+
+  {
+    id: '2' ,
+    email : 'البريد الاليكتروني ' ,
+    phone : 'الهاتف ' ,
+    name : 'الاسم كاملا '  ,
+    phone2 : 'رقم هاتف اضافي ' , 
+    imgcountry : imgs.imgcountry ,
+    male : imgs.male ,
+    female : imgs.female ,
+
+
+  }
+]
+
+const Ordersdata = [
+  {
+    id: '1' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "red" ,
+  } ,
+
+  {
+    id: '2' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "green" ,
+  } ,
+
+  {
+    id: '3' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "green" ,
+  } ,
+
+  {
+    id: '4' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "black" ,
+  } ,
+
+  {
+    id: '4' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "black" ,
+  } ,
+
+  {
+    id: '3' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "green" ,
+  } ,
+
+  {
+    id: '4' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "black" ,
+  } ,
+  {
+    id: '5' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "red" ,
+  } ,
+
+  {
+    id: '3' ,
+    imgproduct : imgs.imgproduct , 
+    nameproduct : 'اسم المنتج' ,
+    section : 'القسم' ,
+    price : '15.000 ر.ل'  , 
+    profile : imgs.orderimg ,
+    state : 'حاله الطلب '  ,
+    state1 : "green" ,
+  } ,
+]
+
+const Profitdata = [
+  {
+    id:'1' ,
+    imgicon : imgs.imgicon2 ,
+    head : 'الأرباح المتاحة' ,
+    price : '$22,493' ,
+    bg:'none' ,
+
+  } ,
+  {
+    id:'2' ,
+    imgicon : imgs.imgicon1 ,
+    head : 'الأرباح المتوقعة' ,
+    price : '$22,493' ,
+    bg:'none' ,
+
+  } ,
+  {
+    id:'1' ,
+    imgicon : imgs.imgicon3 ,
+    head : 'اجمالي الارباح ' ,
+    price : '$22,493', 
+    bg:'green' ,
+  } ,
+]
+export {Profitdata, Ordersdata ,sidedata,OptionDeposit , profiledata , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
