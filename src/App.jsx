@@ -13,6 +13,7 @@ import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage'
 import Profitratio from './modules/Profitratio/Profitratio';
 import Oeders from './modules/Orders/Oeders';
 import Profit from './modules/Profit/Profit';
+import ContactForm from './modules/Contact/Contact';
 function App() {
   // تعريف الرواتر
   const router = createBrowserRouter([
@@ -67,6 +68,10 @@ function App() {
     {
       path : '/modules/Profit/Profit'  , 
       element:<Profit/>,
+    },
+    {
+      path : '/modules/Contact/Contact'  , 
+      element:<ContactForm />,
     },
   ]);
 

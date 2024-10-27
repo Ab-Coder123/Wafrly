@@ -64,7 +64,7 @@ const Navbar = () => {
                 <Link to='/'>الرئسيه</Link>
               </button>
               <button className="px-2 font-bold text-black   dark:hover:text-[#99302e] hover:text-[#99302e] hover:-translate-y-1 transition-all duration-300 md:px-4 py-1 md:py-2">
-                <Link to="">تواصل معنا</Link>
+                <Link to="/modules/Contact/Contact">تواصل معنا</Link>
               </button>
               <button className="px-2 font-bold  text-black   dark:hover:text-[#99302e] hover:text-[#99302e] hover:-translate-y-1 transition-all duration-300 md:px-4 py-1 md:py-2">
                 <Link to="/modules/WhoWe/WhoWe">من نحن</Link>
@@ -85,7 +85,9 @@ const Navbar = () => {
             </div>
             <ul className="flex  gap-10 justify-center mt-4 text-lg text-gray-700">
                 <li><Link to=''> <FontAwesomeIcon icon={faHeart} size="x" /> </Link></li>
-                <li><Link to='/modules/Profitratio/Profitratio'> <FontAwesomeIcon icon={faShoppingCart} size="x" /></Link></li>
+                <li><Link to='/modules/Profitratio/Profitratio
+                .
+                  '> <FontAwesomeIcon icon={faShoppingCart} size="x" /></Link></li>
                 <li><Link to=''> <FontAwesomeIcon icon={faBell} size="x" /></Link></li>
                 <li><Link to='/modules/SignUp/Signup'> <FontAwesomeIcon icon={faUser} size="x" /></Link></li>
 
