@@ -659,4 +659,99 @@ const Profitdata = [
     bg:'green' ,
   } ,
 ]
-export {Profitdata, Ordersdata ,sidedata,OptionDeposit , profiledata , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
+
+
+const shoppingcartdata1 =[
+  {
+    id:'1' ,
+    head1 : 'المتاح' ,
+    head2 : 'السعر' ,
+    head3 : 'نسبه الارباح ' ,
+    head4 : 'الكميه ' ,
+    head5 : 'المجموع الفرعي' ,
+  } ,
+] 
+
+const shoppingcartdata2 =[
+
+  {
+    id:'2' ,
+    img : imgs.tvimg ,
+    price : '$650' ,
+    profits:'$650' ,
+    calc: '$650' ,
+    title : 'شاشات الكريستال ' ,
+  } ,
+
+  {
+    id:'3' ,
+    img : imgs.controlimg ,
+    title : 'لوحة ألعاب H1' ,
+    price : '$550' ,
+    profits:'$550' ,
+    calc: '$550'
+  }
+]
+
+const Confirmrequest = [ 
+  {
+      id: '1',
+      img1: imgs.tvimg,              // صورة الشاشة
+      img2: imgs.controlimg,          // صورة لوحة الألعاب
+      title1: 'شاشات الكريستال السائل',
+      title2: 'لوحة ألعاب H1',
+      price1: '$650',                 // سعر الشاشة
+      price2: '$1100',                // سعر لوحة الألعاب
+      subtotalLabel: 'المجموع الفرعي:', // نص المجموع الفرعي
+      subtotal: '$1750',              // المجموع الفرعي للأسعار
+      profitMarginLabel: 'نسبة الربح:', // نص نسبة الربح
+      profitMargin: '$100',           // قيمة الربح
+      shippingCostLabel: 'قيمة الشحن:', // نص قيمة الشحن
+      shippingCost: '$00.0',             // قيمة الشحن
+      totalLabel: 'المجموع:',          // نص المجموع النهائي
+      total: '$1855'                  // المجموع الكلي بعد الشحن والربح
+  }
+];
+
+
+const Notificationsdata = [
+  {
+    id: '1',
+    img: imgs.prfimg,
+    content: 'Meg Griffin has left you a review. Both of your reviews from this trip are now public.',
+    date: 'March 1, 2023'
+  },
+  {
+    id: '2',
+    img: imgs.prfimg,
+    content: 'Cleveland Brown has left you a review. Both of your reviews from this trip are now public.',
+    date: 'February 26, 2023'
+  },
+  {
+    id: '3',
+    img: imgs.prfimg,
+    content: 'Glenn accepted your invite to co-host Cheerful 2-bedroom home in the heart of Quahog.',
+    date: 'April 25, 2022'
+  },
+  {
+    id: '4',
+    img: imgs.prfimg,
+    content: 'Glenn accepted your invite to co-host Cozy 3BR home minutes from downtown Quahog.',
+    date: 'March 6, 2022'
+  },
+  {
+    id: '5',
+    img: imgs.prfimg,
+    content: 'Please confirm your email address by clicking on the link we just emailed you. If you cannot find the email, you can request a new confirmation email or change your email address.',
+    date: 'March 1, 2022'
+  }
+];
+
+
+
+
+
+
+
+
+export {Notificationsdata, Confirmrequest , shoppingcartdata2 ,shoppingcartdata1 , Profitdata, Ordersdata ,sidedata,OptionDeposit , profiledata , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };

@@ -7,12 +7,12 @@ import { Section } from "../../Constant/index";
 const Sectionsdata = ({ Sectionprop }) => {
   return (
     <>
-      <div className="flex items-center justify-center gap-10">
+      <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-12 gap-10 mx-auto">
 
         {Sectionprop.map((dataprop) => {
           return (
             <>
-              <div key={dataprop.id} className="flex flex-col items-center justify-center gap-3 border border-solid border-gray-300 cursor-pointer hover:text-white hover:bg-[#C54442] rounded-md p-5 w-40">
+              <div key={dataprop.id} className="flex flex-col col-span-2 md:col-span-2  items-center justify-center gap-3 border border-solid border-gray-300 cursor-pointer hover:text-white hover:bg-[#C54442] rounded-md p-5 w-40">
                 <img src={dataprop.icon} alt="" className=" hover:filter hover:invert" />
                 <h2>{dataprop.title}</h2>
               </div>

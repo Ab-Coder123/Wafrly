@@ -13,15 +13,15 @@ export const Payingdata = ({ PayingdataProp }) => {
     const location = useLocation();
 
     return (
-        <div className='flex flex-col justify-center items-start'>
-            <div className='text-base text-gray-300'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10  items-start'>
+            <div className='text-base col-span-10 w-40  text-gray-300'>
                 <span>الرئيسية \ حسابي</span>
             </div>
             {PayingdataProp.map((payprop) => {
                 const isActive = location.pathname === payprop.Link;
 
                 return (
-                    <div key={payprop.id} className='p-2 flex items-start'>
+                    <div key={payprop.id} className='col-span-10 p-2 flex items-start'>
                         <ul className='flex flex-col items-start'>
                             <Link to={payprop.Link}>
                                 <li
@@ -33,7 +33,7 @@ export const Payingdata = ({ PayingdataProp }) => {
                                         alt=""
                                     />
                                     <h2
-                                        className={`flex p-1 gap-3 items-center ${isActive ? 'text-red-500' : 'hover:text-red-500 focus:text-red-500'}`}
+                                        className={`flex p-1 gap-3 w-full items-center ${isActive ? 'text-red-500' : 'hover:text-red-500 focus:text-red-500'}`}
                                     >{payprop.head}</h2>
                                 </li>
                             </Link>
@@ -42,7 +42,7 @@ export const Payingdata = ({ PayingdataProp }) => {
                 );
             })}
             <div>
-                <button className='p-1 rounded-md bg-gray-400 text-white hover:text-red-500 focus:text-red-500 active:text-red-500'>
+                <button className='col-span-10 w-40 p-1 rounded-md bg-gray-400 text-white hover:text-red-500 focus:text-red-500 active:text-red-500'>
                     تغيير كلمة المرور
                 </button>
             </div>
@@ -74,16 +74,16 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                 return (
                     <>
 
-                        <div className='' key={payprop2.id}>
+                        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 ' key={payprop2.id}>
 
-                            <div className="flex flex-row justify-start gap-4 pt-12 lg:py-3">
+                            <div className="col-span-10 flex flex-row justify-start gap-4 pt-12 lg:py-3">
                                 <img src={img1} className="h-10" alt="" />
                                 <h2 className="mb-12 text-4xl font-bold text-gray-800">
                                     المحفظه
                                 </h2>
                             </div>
 
-                            <div className=' w-[350px] md:w-[550px] bg-[#C54442] p-2 rounded-md flex justify-between   gap-11 items-center'>
+                            <div className='col-span-10  bg-[#C54442] p-2 rounded-md flex justif gap-11 items-center'>
                                 <img src={payprop2.img} className='h-32' alt="payment" />
                                 <div className=' text-white '>
                                     <span className='text-xs'>{payprop2.span}</span>
@@ -91,7 +91,7 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                                 </div>
                             </div>
 
-                            <div className="border border-solid border-gray-400  rounded-md shadow-md p-1.5 flex mb-4 mt-7 gap-3">
+                            <div className=" col-span-10 border border-solid border-gray-400  rounded-md shadow-md p-1.5 flex mb-4 mt-7 gap-3">
                                 <button
                                     className={`flex-1 py-2 text-center rounded-md ${tripType === 'Pay' ? 'bg-[#C54442] text-white' : 'bg-gray-200 text-gray-500'}`}
                                     onClick={() => {
@@ -115,7 +115,7 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
                                 </button>
                             </div>
 
-                            <div className='flex flex-col '>
+                            <div className=' col-span-10 flex flex-col '>
                                 {showOptionData &&
                                     (
                                         <div className=' p-1 flex items-center  gap-3 shadow-md'>
@@ -142,7 +142,7 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
 
                             {showOptionData &&
                                 (
-                                    <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
+                                    <button className=' col-span-5 bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
                                         طلب السحب
                                     </button>
                                 )
@@ -150,7 +150,7 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
 
                             {optionDeposits &&
                                 (
-                                    <button className='bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
+                                    <button className=' col-span-5 bg-[#C54442] text-white font-semibold p-1 mb-10 rounded-sm'>
                                         طلب الايداع
 
                                     </button>
@@ -328,8 +328,8 @@ const Optionpaybranchs = ({ Optdataprops }) => {
 
 const Payingdata3 = ({ PayingdataProp3 }) => {
     return (
-        <div className="flex flex-col space-y-2">
-            <div className="flex flex-row justify-start gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 space-y-2">
+            <div className=" col-span-10 flex flex-row justify-start gap-4">
                 <img src={img1} className="h-10" alt="" />
                 <h2 className="mb-8 text-4xl font-bold text-gray-800">
                     آخر العمليات
@@ -340,24 +340,24 @@ const Payingdata3 = ({ PayingdataProp3 }) => {
 
                     <>
 
-                        <div key={paydata3.id} className="flex items-center justify-between gap-4 bg-white shadow-md p-5 rounded-lg">
+                        <div key={paydata3.id} className=" w-full col-span-10 grid grid-cols-10 sm:grid-cols-10 md:grid-cols-12 gap-5 bg-white shadow-md p-5 rounded-lg">
 
 
                             {/* Right Section: Operation Image */}
-                            <div className={` rounded-lg flex items-center lg:items-center ${paydata3.changebg === 'red' ? 'bg-gray-800' : 'bg-[#C54442]'}`}>
-                                <img src={paydata3.imgoperation} alt="operation icon" className="w-8 h-8" />
+                            <div className={` col-span-2 lg:col-span-2 w-fit rounded-lg flex items-center lg:items-center ${paydata3.changebg === 'red' ? 'bg-gray-800' : 'bg-[#C54442]'}`}>
+                                <img src={paydata3.imgoperation} alt="operation icon" className=" " />
                             </div>
 
 
 
                             {/* Middle Section: Name and Account Number */}
-                            <div className="flex flex-col items-center lg:items-start">
+                            <div className=" col-span-8  lg:col-span-6 flex flex-col items-center lg:items-start">
                                 <span className="text-gray-700 font-medium">{paydata3.name}</span>
                                 <span className="text-gray-500">{paydata3.accountNumber}</span>
                             </div>
 
                             {/* Left Section: Date and Change Percentage */}
-                            <div className="flex flex-col">
+                            <div className=" col-span-10 lg:col-span-4 flex flex-col">
                                 <span className="text-gray-500 text-sm">{paydata3.date}</span>
                                 <span className={`text-sm font-bold ${paydata3.changeColor === 'green' ? 'text-green-500' : 'text-red-500'}`}>
                                     {paydata3.change}
@@ -448,10 +448,16 @@ const Paying = () => {
     return (
         <>
             <Navbar />
-            <section className='py-12 px-20 font-cairo flex flex-col md:flex-row  justify-around items-start md:items-start gap-4'>
-                <Payingdata PayingdataProp={SidePay} />
-                <Payingdata2 PayingdataProp2={SidePay2} />
-                <Payingdata3 PayingdataProp3={OperationsData} />
+            <section className='  py-12 px-5 lg:px-20 font-cairo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-x-5 lg:gap-x-5'>
+                <div className='col-span-5 lg:col-span-2'>
+                    <Payingdata PayingdataProp={SidePay} />
+                </div>
+                <div className='col-span-9  lg:col-span-5'>
+                    <Payingdata2 PayingdataProp2={SidePay2} />
+                </div>
+                <div className='col-span-10 lg:col-span-5'>
+                    <Payingdata3 PayingdataProp3={OperationsData} />
+                </div>
             </section>
             <Footer />
         </>

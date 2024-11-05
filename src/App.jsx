@@ -14,6 +14,10 @@ import Profitratio from './modules/Profitratio/Profitratio';
 import Oeders from './modules/Orders/Oeders';
 import Profit from './modules/Profit/Profit';
 import ContactForm from './modules/Contact/Contact';
+import Shoppingcart from './modules/shoppingcart/shoppingcart';
+import Confirm from './modules/Confirm/Confirm';
+import Notification from './modules/Notifications/Notifications';
+
 function App() {
   // تعريف الرواتر
   const router = createBrowserRouter([
@@ -72,6 +76,20 @@ function App() {
     {
       path : '/modules/Contact/Contact'  , 
       element:<ContactForm />,
+    },
+    {
+      path : '/modules/shoppingcart/shoppingcart'  , 
+      element:<Shoppingcart />,
+    },
+
+    {
+      path : '/modules/Confirm/Confirm'  , 
+      element: <Confirm />,
+    },
+
+    {
+      path : '/modules/Notifications/Notifications'  , 
+      element: <Notification />
     },
   ]);
 

@@ -4,7 +4,6 @@ import { faPhoneAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import emailjs from '@emailjs/browser';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-
 function ContactForm() {
     const form = useRef();
 
@@ -24,14 +23,14 @@ function ContactForm() {
     return (
         <>
             <Navbar />
-            <div className=" font-cairo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 py-12 my-12 gap-20 px-5 md:px-24 bg-white ">
+            <div className=" overflow-hidden font-cairo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 py-12 my-12 gap-20 px-5 md:px-24 bg-white ">
                 {/* قسم معلومات الاتصال */}
-                <div className="col-span-5 space-y-10">
+                <div className=" col-span-7 lg:col-span-5 space-y-10">
                     <div className="flex items-start gap-5 space-x-2">
                         <FontAwesomeIcon icon={faPhoneAlt} className="text-[#DB4444] text-xl" />
                         <div>
                             <h3 className="text-2xl pb-4 font-semibold">اتصل بنا</h3>
-                            <p className='text-xl'>نحن متواجدون 24/7 أيام في الأسبوع.</p>
+                            <p className='font-bold text-xl'>نحن متواجدون 24/7 أيام في الأسبوع.</p>
                             <p>الهاتف: +8806111122222</p>
                         </div>
                     </div>
@@ -40,7 +39,7 @@ function ContactForm() {
                         <FontAwesomeIcon icon={faEnvelope} className="text-[#DB4444] text-xl" />
                         <div>
                             <h3 className="text-2xl pb-4 font-semibold">اكتب لنا</h3>
-                            <p className='text-xl'>املأ النموذج الخاص بنا وسنقوم بالرد خلال 24 ساعة</p>
+                            <p className='  font-bold text-xl w-[300px] lg:w-full '>املأ النموذج الخاص بنا وسنقوم بالرد خلال 24 ساعة</p>
                             <p className='text-l'>البريد الإلكتروني: customer@coname.com</p>
                             <p className='text-l '>رسائل البريد الإلكتروني: support@coname.com</p>
                         </div>

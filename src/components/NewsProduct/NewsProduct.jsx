@@ -11,10 +11,10 @@ const NewsProductdata = ({ NewsProp }) => {
 
     return (
         <>
-            <div className='flex justify-center items-start gap-5 mx-auto'>
+            <div className='grid grid-cols-1 sm:grid-cols-8 md:grid-cols-10 gap-20 px-1 lg:px-28 '>
                 {/* div للعنصر الذي يحمل id = 1 */}
                 {product1 && (
-                    <div className='w-[700px] rounded-md bg-black text-white overflow-hidden'>
+                    <div className='   md:w-[600px] h-[500px] col-span-6 lg:col-span-5 rounded-md bg-black text-white overflow-hidden'>
                         <div className='z-10'>
                             <img className=' relative top-24 left-1 h-96 object-cover ' src={product1.img} alt="" />
                         </div>
@@ -27,7 +27,7 @@ const NewsProductdata = ({ NewsProp }) => {
                 )}
 
                 {/* section 2 */}
-                <div className='flex flex-col  items-center'>
+                <div className='flex flex-col  items-center col-span-6 md:col-span-8 lg:col-span-5'>
                     {/* div للعنصر الذي يحمل id = 2 */}
                     {product2 && (
                         <div className='rounded-md text-white overflow-hidden'>

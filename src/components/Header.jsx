@@ -55,15 +55,15 @@ const Header = () => {
 
 
   return (
-    <header className="py-10 font-cairo flex flex-col md:flex-row justify-center gap-28 items-center">
+    <header className="py-10 font-cairo flex flex-col md:flex-row justify-center gap-28 items-start">
       {/* Static Text Over the Slider */}
       <section className="">
           <Sidebar SideProp={sidedata}/>
       </section>
-      <div className="h-64 w-[1px]   bg-gray-300"></div>
+      <div className="h-64 w-[1px] hidden sm:block   bg-gray-300"></div>
       {/* Slider with Images */}
       <div className="slider-item">
-        <img src={slideimg} alt="Alex" className=" h-56 md:h-72   slider-img" />
+        <img src={slideimg} alt="Alex" className=" h-52 md:h-72   slider-img" />
       </div>
 
       

@@ -21,13 +21,13 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
             {UseBouqout1 &&
                 (
                     <div key={UseBouqout1.id} className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 items-start'>
-                        <div className='py-5 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-32 items-start'>
-                            <div className='flex items-start gap-7 col-span-6'>
+                        <div className='py-5 pb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-x-28 lg:gap-x-36 items-start'>
+                            <div className='flex items-start gap-7 col-span-5'>
                                 <img src={UseBouqout1.logo} className='h-10' alt="" />
                                 <h2 className='font-bold text-black text-3xl'>{UseBouqout1.head}</h2>
                             </div>
                             {/* 2 */}
-                            <div className='col-span-2 text-center bg-[#C54442] rounded-md items-center gap-1 p-1 flex'>
+                            <div className='col-span-3 w-fit  text-center bg-[#C54442] rounded-md items-center gap-1 p-1 flex'>
                                 <img src={UseBouqout1.bouqoutimg} className='h-7' alt="" />
                                 <h3 className=' p-1 text-xl text-white'>{UseBouqout1.bouqout}</h3>
                             </div>
@@ -38,7 +38,7 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                         {/* div2  */}
                         <div className=' col-span-10 border border-[#C54442] border-solid border-2 p-4 rounded-xl '>
 
-                            <div className='py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-32 items-start'>
+                            <div className='py-5 flex items-start gap-40 items-start'>
                                 <div className='flex items-start gap-3 col-span-3'>
                                     <img src={UseBouqout1.star} alt="" />
                                     <h2 className='font-bold text-black text-xl'>{UseBouqout1.span}</h2>
@@ -57,7 +57,7 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                                         <ProgressBar className="col-span-8" value={balance} max={100} />
 
                                         {/* span value */}
-                                        <span className='col-span-1'>{UseBouqout1.span2}</span>
+                                        <span className='col-span-4 lg:col-span-1'>{UseBouqout1.span2}</span>
 
                                         <button
                                             className="col-span-1 px-4 py-1 bg-[#C54442] text-white rounded-md"
@@ -82,7 +82,7 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                             <img src={UseBouqout2.logo} alt="UseBouqout2" />
                             <h2 className='font-bold text-black text-3xl'>{UseBouqout2.head}</h2>
                         </div>
-                        <p className=' pr-12 text-gray-400'>{UseBouqout2.prah}</p>
+                        <p className='text-gray-400'>{UseBouqout2.prah}</p>
                     </div>
 
                     {/* cards */}
@@ -214,13 +214,13 @@ const UseBouqout = () => {
     return (
         <>
             <Navbar />
-            <div className='font-cairo'>
-                <section className=' container py-12 font-cairo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-24'>
-                    <div className=' col-span-1 '>
+            <div className='font-cairo overflow-hidden'>
+                <section className='  font-cairo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
+                    <div className=' col-span-5 lg:col-span-3'>
                         <Payingdata PayingdataProp={SidePay} />
                     </div>
 
-                    <div className=' col-span-3'>
+                    <div className=' col-span-10 lg:col-span-9'>
                         <UseBouqoutdata UseBouqoutdataProp={UseBouqoutdatas} />
                     </div>
                 </section>

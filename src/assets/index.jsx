@@ -60,8 +60,14 @@ import imgproduct from './Images/Orders/image 3.png' ;
 import orderimg from './Images/Orders/Ellipse 11.png'
 import imgicon1 from './Images/Profit/Frame 81594.png' ; 
 import imgicon2 from './Images/Profit/noto_heavy-dollar-sign.png' ; 
+import controlimg from './Images/ShoppingCart/Monitor-Cart-Small.png'
+import tvimg from './Images/ShoppingCart/Gamepad-Cart-Small.png' ;
+import prfimg from './Images/Notifications/Avatar.png' ;
 
 const imgs = {
+  prfimg,
+  tvimg ,
+  controlimg ,
   imgicon1 ,
   imgicon2 ,
   imgproduct ,
