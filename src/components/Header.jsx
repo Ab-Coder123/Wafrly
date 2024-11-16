@@ -60,9 +60,9 @@ const Header = () => {
       <section className="">
           <Sidebar SideProp={sidedata}/>
       </section>
-      <div className="h-64 w-[1px] hidden sm:block   bg-gray-300"></div>
+      <div className="h-64 w-[1px] hidden lg:block   bg-gray-300"></div>
       {/* Slider with Images */}
-      <div className="slider-item">
+      <div className="slider-item  ">
         <img src={slideimg} alt="Alex" className=" h-52 md:h-72   slider-img" />
       </div>
 

@@ -24,7 +24,7 @@ ProductCard.propTypes = {
 const Product = () => {
   return (
     <>
-      <section className="py-12 font-cairo">
+      <section className="py-12 font-cairo px-0 lg:px-20">
         <div className="container  px-6 mx-auto">
           <div className="flex flex-row items-center justify-between gap-4">
             <div className="flex gap-3">

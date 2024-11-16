@@ -43,7 +43,7 @@ export const ProductCard = ({ popularproduct }) => {
     <Slider {...settings}>
       {popularproduct.map((product) => (
         <div key={product.id} className="">
-          <div className=" w-[75%] p-5 mx-auto overflow-hidden  transition-all duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2">
+          <div className=" w-[100%] md:w-[85%] lg:w-[90%] p-5 mx-auto overflow-hidden  transition-all duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2">
             {/* الأيقونات الجانبية */}
             <div
               className={`absolute top-5 right-0 flex flex-col items-center gap-4 p-2 pb-4 bg-gray-50 rounded-r-lg transition-transform duration-300 ${showIcons ? ' transtion transition-opacity translate-x-0 ' : ' opacity-0 transition transition-opacity'
@@ -148,7 +148,7 @@ ProductCard.propTypes = {
 
 const Popproduct = () => {
   return (
-    <section className="py-12  font-cairo">
+    <section className="py-12 font-cairo px-0 lg:px-20">
       <div className="container  px-6 mx-auto">
         <div className="flex flex-row justify-start gap-4">
           <img src={img1} className="h-10" alt="" />

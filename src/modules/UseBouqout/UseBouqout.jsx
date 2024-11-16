@@ -215,7 +215,7 @@ const UseBouqout = () => {
         <>
             <Navbar />
             <div className='font-cairo overflow-hidden'>
-                <section className='  font-cairo grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
+            <section className='  font-cairo overflow-hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
                     <div className=' col-span-5 lg:col-span-3'>
                         <Payingdata PayingdataProp={SidePay} />
                     </div>

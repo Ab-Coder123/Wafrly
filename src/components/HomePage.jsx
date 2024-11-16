@@ -10,7 +10,7 @@ import Allproduct from "./Allprod/Allproduct";
 import NewsProduct from "./NewsProduct/NewsProduct";
 const HomePage = () => {
   return (
-    <div className='text-black bg-white  '>
+    <div className='text-black bg-white overflow-hidden '>
     <Navbar />
     <Header/> 
     <Pophotel/>

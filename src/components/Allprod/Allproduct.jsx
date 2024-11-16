@@ -29,7 +29,7 @@ ProductCard.propTypes = {
 
 const Allproduct = () => {
   return (
-    <section className="py-12  font-cairo">
+    <section className="py-12 font-cairo px-0 lg:px-20">
       <div className="container  px-6 mx-auto">
         <div className="flex flex-row justify-start gap-4">
           <img src={img1} className="h-10" alt="" />

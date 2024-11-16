@@ -85,9 +85,9 @@ const Profit = () => {
     return (
         <>
             <Navbar />
-            <section className='grid grid-cols-1 font-cairo sm:grid-cols-2 md:grid-cols-12 px-24 py-10'>
-                <div className=' col-span-3'>
-                    <Payingdata PayingdataProp={SidePay} />
+            <section className='  font-cairo overflow-hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
+            <div className=' col-span-5 lg:col-span-3'>
+            <Payingdata PayingdataProp={SidePay} />
                 </div>
                 <div className='col-span-9'>
                     <Profitdatas ProfitProp={Profitdata} />

@@ -45,7 +45,7 @@ const Ordersdatas = ({ OrdersPropdata }) => {
 
     return (
         <>
-            <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 px-4 sm:px-8'>
 
                 <div className=" col-span-8 flex flex-row justify-start gap-4 pt-12 lg:py-3">
                     <img src={img1} className="h-10" alt="" />

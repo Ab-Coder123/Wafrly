@@ -13,7 +13,7 @@ const Signup = () => {
 
 
           {/* form */}
-          <div className='  p-5 w-full'>
+          <div className='  p-5 w-80 lg:w-full'>
             <div className="flex flex-row   items-center justify-center gap-6 mx-auto">
               <img src={logo} alt="" />
               <h2 className="text-3xl font-extrabold  text-black text-center">
@@ -60,7 +60,7 @@ const Signup = () => {
                   placeholder="Confirm Password"
                 />
               </div>
-              <button className="w-full mt-6 bg-[#C54442] text-white py-2 px-4 rounded-lg hover:bg-[#C54442] focus:outline-none focus:bg-green-400">
+              <button className="w-full mt-6 bg-[#C54442] text-white py-2 px-4 rounded-lg hover:bg-[#C54442] focus:outline-none ">
                 <Link to='/modules/Congratulations/Congratu'></Link>
                 Sign Up
               </button>
@@ -75,7 +75,7 @@ const Signup = () => {
            
           </div>
 
-          <div className="w-full">
+          <div className="w-full hidden lg:block">
             <img
               src={Side_Image}
               alt="Login"

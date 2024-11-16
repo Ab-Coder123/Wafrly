@@ -27,7 +27,7 @@ const NewsProductdata = ({ NewsProp }) => {
                 )}
 
                 {/* section 2 */}
-                <div className='flex flex-col  items-center col-span-6 md:col-span-8 lg:col-span-5'>
+                <div className='flex flex-col justify-start items-start col-span-6 md:col-span-8 lg:col-span-5'>
                     {/* div للعنصر الذي يحمل id = 2 */}
                     {product2 && (
                         <div className='rounded-md text-white overflow-hidden'>

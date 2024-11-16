@@ -17,7 +17,7 @@ const WhoWedata = ({ WhosProp }) => {
 
     return (
         <>
-            <div className='flex flex-col  gap-4'>
+            <div className='flex flex-col px-0 lg:px-12  gap-4'>
                 {/* div1 brach */}
 
                 {Whodata1 &&

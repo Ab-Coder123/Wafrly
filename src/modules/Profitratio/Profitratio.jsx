@@ -17,6 +17,8 @@ const Profitratiodata = ({ ProfitratiodataProp }) => {
         setGender(value);
     };
 
+
+
     const handleSectionChange = (section) => {
         setFavoriteSection(section);
     };
@@ -38,7 +40,6 @@ const Profitratiodata = ({ ProfitratiodataProp }) => {
                         </div>
                     </div>
                 )}
-
                 {/* div 2 */}
                 {profiledata2 && (
                     <div className="py-8 col-span-8 flex flex-col md:flex-row items-start gap-8 justify-start">
@@ -149,8 +150,8 @@ const Profitratio = () => {
     return (
         <div className='font-cairo'>
             <Navbar />
-            <section className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-4 sm:px-8 md:px-24 py-10'>
-                <div className='col-span-3 mb-8 md:mb-0'>
+            <section className='  font-cairo overflow-hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
+                <div className='col-span-5 lg:col-span-3 mb-8 md:mb-0'>
                     <Payingdata PayingdataProp={SidePay} />
                 </div>
                 <div className='col-span-8'>
@@ -163,3 +164,26 @@ const Profitratio = () => {
 }
 
 export default Profitratio;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,8 @@
 // sidedata.js
 import imgs from '../assets'; // تأكد من أن المسار صحيح بناءً على هيكل مشروعك
 
+
+
 const sidedata = [
   {
     id: '1',
@@ -754,4 +756,4 @@ const Notificationsdata = [
 
 
 
-export {Notificationsdata, Confirmrequest , shoppingcartdata2 ,shoppingcartdata1 , Profitdata, Ordersdata ,sidedata,OptionDeposit , profiledata , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
+export { Notificationsdata, Confirmrequest , shoppingcartdata2 ,shoppingcartdata1 , Profitdata, Ordersdata ,sidedata,OptionDeposit , profiledata , iconstars , ProductDetailsPagedatapart1 , ProductDetailsPagedatapart2 , Optionpaybranch, Products, UseBouqoutdatas , OperationsData, WhoWedatas, Section, Bannerdatas, Optionpay, NewsProducts, SidePay, SidePay2 };
