@@ -1,11 +1,22 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import PropTypes from "prop-types";
 import { } from '../../Constant';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import { Confirmrequest } from '../../Constant/index';
+import axios from 'axios';
 
 const ConfirmOrder = ({ data }) => {
+    // useEffect( async () => {
+         
+    //     try {
+    //       const response = await axios.get('https://Admin.afirly.net/api/nationality');
+    //       console.log(response); // Handle the response data (array of nationalities)
+    //   } catch (error) {
+    //       console.error('Error fetching nationalities:', error.response || error.message);
+    //   }
+     
+    //    }, []);
     return (
         <div className="container mx-auto p-6 py-12">
               

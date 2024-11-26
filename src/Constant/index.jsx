@@ -48,33 +48,36 @@ const sidedata = [
 
 
 const Products = [
-
   {
+    id: "1",
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct1,
-    span1: 'نسبة التسويق 7,00 ',
-    span2: ' 199.99'
+    span1: "نسبة التسويق 7,00 ",
+    span2: "199.99",
   },
   {
+    id: "2",
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct2,
-    span1: 'نسبة التسويق 7,00 ',
-    span2: ' 199.99'
+    span1: "نسبة التسويق 7,00 ",
+    span2: "199.99",
   },
   {
+    id: "3",
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct1,
-    span1: 'نسبة التسويق 7,00 ',
-    span2: ' 199.99'
+    span1: "نسبة التسويق 7,00 ",
+    span2: "199.99",
   },
   {
+    id: "4",
     title: "سماعة رأس لاسلكية عالية الجودة",
     imageproduct: imgs.imageproduct2,
-    span1: 'نسبة التسويق 7,00  ',
-    span2: ' 199.99'
+    span1: "نسبة التسويق 7,00 ",
+    span2: "199.99",
   },
-
 ];
+
 const Section = [
   {
     id: 1,
@@ -193,8 +196,8 @@ const SidePay = [
     img: imgs.Sideicon5,
     head: 'تسجيل خروج '  ,
     Link : '/'
-
   },
+
 ]
 
 const SidePay2 = [

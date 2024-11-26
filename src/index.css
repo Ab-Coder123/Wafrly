@@ -3,3 +3,13 @@
 @tailwind utilities;
 
 
+.Up {
+    position: relative;
+}
+.Up:hover .img  {
+    background-color: white ; 
+    padding:3px ;
+    border-radius: 20px
+}
+ ;
+

@@ -9,7 +9,7 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { Link } from "react-router-dom";
 
 export const ProductCard = ({ popularproduct }) => {
-  const [showIcons, setShowIcons] = useState(false);
+  const [visibleIcons, setVisibleIcons] = useState({}); // الكائن يحمل حالة الإظهار لكل `id`
 
   const settings = {
     dots: true,
@@ -45,59 +45,65 @@ export const ProductCard = ({ popularproduct }) => {
         <div key={product.id} className="">
           <div className=" w-[100%] md:w-[85%] lg:w-[90%] p-5 mx-auto overflow-hidden  transition-all duration-300 transform bg-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2">
             {/* الأيقونات الجانبية */}
-            <div
-              className={`absolute top-5 right-0 flex flex-col items-center gap-4 p-2 pb-4 bg-gray-50 rounded-r-lg transition-transform duration-300 ${showIcons ? ' transtion transition-opacity translate-x-0 ' : ' opacity-0 transition transition-opacity'
-                }`}
-            >
 
+            <div
+              key={product.id}
+              className={`absolute top-5 right-0 flex flex-col items-center gap-4 p-2 pb-4 bg-gray-50 rounded-r-lg transition-transform duration-300 
+    ${visibleIcons[product.id] ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}
+  `}
+            >
               <button
                 onClick={() => {
-                  // يمكنك إضافة وظائف إضافية هنا
-                  console.log('Share clicked');
+                  console.log("Facebook clicked");
                 }}
-                className=" hover:text-gray-700"
+                className="hover:text-gray-700"
               >
                 <FontAwesomeIcon icon={faFacebookF} />
               </button>
 
-
               <button
                 onClick={() => {
-                  // يمكنك إضافة وظائف إضافية هنا
-                  console.log('Like clicked');
+                  console.log("Like clicked");
                 }}
-                className=" hover:text-gray-700"
+                className="hover:text-gray-700"
               >
                 <FontAwesomeIcon icon={faHeart} size="2" />
               </button>
+
               <button
                 onClick={() => {
-                  // يمكنك إضافة وظائف إضافية هنا
-                  console.log('Share clicked');
+                  console.log("Share clicked");
                 }}
-                className=" hover:text-gray-700"
+                className="hover:text-gray-700"
               >
                 <FontAwesomeIcon icon={faShareAlt} size="2" />
               </button>
 
               <button
                 onClick={() => {
-                  // يمكنك إضافة وظائف إضافية هنا
-                  console.log('View clicked');
+                  console.log("View clicked");
                 }}
-                className=" hover:text-gray-700"
+                className="hover:text-gray-700"
               >
                 <FontAwesomeIcon icon={faEye} size="2" />
               </button>
             </div>
 
-            {/* زر اظهار/اخفاء الأيقونات */}
+            {/* زر الإظهار/الإخفاء */}
             <button
-              onClick={() => setShowIcons(!showIcons)}
+              onClick={() =>
+                setVisibleIcons((prev) => ({
+                  ...prev,
+                  [product.id]: !prev[product.id], // عكس الحالة للمنتج الحالي
+                }))
+              }
               className="absolute right-0 bottom-40 transform -translate-y-1/2 bg-gray-100 p-2 rounded-l-lg hover:bg-gray-300 transition-colors duration-300"
             >
-              {showIcons ? <FontAwesomeIcon icon={faArrowRight} size="l" />
-                : <FontAwesomeIcon icon={faArrowLeft} size="l" />}
+              {visibleIcons[product.id] ? (
+                <FontAwesomeIcon icon={faArrowRight} size="l" />
+              ) : (
+                <FontAwesomeIcon icon={faArrowLeft} size="l" />
+              )}
             </button>
 
             <div className="py-10 bg-gray-100 rounded-md">

@@ -17,6 +17,10 @@ import ContactForm from './modules/Contact/Contact';
 import Shoppingcart from './modules/shoppingcart/shoppingcart';
 import Confirm from './modules/Confirm/Confirm';
 import Notification from './modules/Notifications/Notifications';
+import ForgetPassword from './modules/ForgetPass/ForgetPass';
+import ResetPassword from './modules/ResetPass/ResetPass';
+import OtpVerificationPage from './modules/Verify/Verify';
+import Tabledatabase from './modules/Table/Table';
 
 function App() {
   // تعريف الرواتر
@@ -29,6 +33,26 @@ function App() {
       path : '/modules/Login/Login' , 
       element: <Login /> ,
     } ,
+    {
+      path : '/modules/Table/Table' , 
+      element: <Tabledatabase/> ,
+    } ,
+    {
+      path : '/modules/ForgetPass/ForgetPass' , 
+      element: <ForgetPassword /> ,
+    } ,
+    
+    {
+      path : '/modules/ResetPass/ResetPass' , 
+      element: <ResetPassword /> ,
+    } ,
+    
+    {
+      path : '/modules/Verify/Verify' , 
+      element: <OtpVerificationPage />,
+    } ,
+    
+
     {
       path : '/modules/SignUp/Signup' , 
       element: <Signup /> ,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faShoppingCart, faBell, faBars, faShare, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import img1 from "../../assets/Images/New folder/logo.png";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,7 +21,6 @@ const Navbar = () => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 1000);
     };
-
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
@@ -45,20 +44,19 @@ const Navbar = () => {
     setIsSearchOpen(!isSearchOpen);
   };
 
-
   return (
     <>
       {/* الشريط العلوي للتخفيضات */}
       <section className="bg-[#C54442] py-2 overflow-hidden font-cairo">
         <div className="flex justify-center gap-3 text-white">
           <h2 className="font-bold"> %تخفيضات الصيف على جميع المنتجات والتوصيل السريع المجاني - خصم 50 </h2>
-          <Link to='' className="font-bold text-lg underline">أطلب الآن</Link>
+          <NavLink to='' className="font-bold text-lg underline">أطلب الآن</NavLink>
         </div>
       </section>
 
       {/* شريط التنقل */}
       <div className="overflow-hidden z-50 py-12 font-cairo">
-        <section className={`fixed ${scrolling ? "top-0" : "top-9"} p-2 z-50 ${isSmallScreen ? "flex  justify-center items-center gap-x-14 " : "grid grid-cols-5 md:grid-cols-12 lg:grid-cols-12  px-24"} shadow-lg w-full transition duration-300 ${scrolling ? "bg-white shadow-lg" : "bg-white text-black"}`}>
+        <section className={`fixed ${scrolling ? "top-0" : "top-9"} p-2 z-50 ${isSmallScreen ? "flex justify-center items-center gap-x-14" : "grid grid-cols-5 md:grid-cols-12 lg:grid-cols-12 px-24"} shadow-lg w-full transition duration-300 ${scrolling ? "bg-white shadow-lg" : "bg-white text-black"}`}>
 
           {/* الشعار وزر القائمة */}
           <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 col-span-2 gap-11 justify-between">
@@ -69,15 +67,29 @@ const Navbar = () => {
           </div>
 
           {/* القائمة */}
-          <div className={`lg:flex items-center gap-20 col-span-5 ${isMenuOpen ? "block absolute flex bg-white  absolute bg-white shadow-lg p-5 top-24 left-1/2 transform -translate-x-1/2 z-5 w-[400px] " : "hidden"} lg:block`}>
-            <Link to='/' className="block py-2 text-[#C54442] font-bold hover:text-[#99302e]">الرئيسية</Link>
-            <Link to='/modules/Contact/Contact' className="block py-2 text-black font-bold hover:text-[#99302e]">تواصل معنا</Link>
-            <Link to='/modules/WhoWe/WhoWe' className="block py-2 text-black font-bold hover:text-[#99302e]">من نحن</Link>
+          <div className={`lg:flex items-center gap-20 col-span-5 ${isMenuOpen ? "block absolute flex bg-white absolute bg-white shadow-lg p-5 top-24 left-1/2 transform -translate-x-1/2 z-5 w-[400px]" : "hidden"} lg:block`}>
+            <NavLink
+              to='/'
+              className={({ isActive }) => isActive ? "block py-2 font-bold text-[#C54442]" : "block py-2 text-black font-bold hover:text-[#99302e]"}
+            >
+              الرئيسية
+            </NavLink>
+            <NavLink
+              to='/modules/Contact/Contact'
+              className={({ isActive }) => isActive ? "block py-2 font-bold text-[#C54442]" : "block py-2 text-black font-bold hover:text-[#99302e]"}
+            >
+              تواصل معنا
+            </NavLink>
+            <NavLink
+              to='/modules/WhoWe/WhoWe'
+              className={({ isActive }) => isActive ? "block py-2 font-bold text-[#C54442]" : "block py-2 text-black font-bold hover:text-[#99302e]"}
+            >
+              من نحن
+            </NavLink>
           </div>
 
           {/* شريط البحث وأيقونات الحساب */}
           <div className="flex items-center gap-10 col-span-5">
-
             {/* زر البحث للأجهزة الصغيرة فقط */}
             {isSmallScreen && (
               <button onClick={toggleSearch} className="text-2xl lg:hidden focus:outline-none">
@@ -100,11 +112,15 @@ const Navbar = () => {
 
             {/* أيقونات الحساب */}
             <ul className={`flex gap-10 text-lg text-gray-700 ${isShareOpen ? 'block absolute bg-white shadow-lg p-5 top-24 left-1/2 transform -translate-x-1/2 z-5' : 'hidden'} lg:flex`}>
-              <li><Link to=''><FontAwesomeIcon icon={faHeart} /></Link></li>
-              <li><Link to='/modules/Profitratio/Profitratio'><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
-              <li><Link to='/modules/Notifications/Notifications'><FontAwesomeIcon icon={faBell} /></Link></li>
-              <li><Link to='/modules/SignUp/Signup'><FontAwesomeIcon icon={faUser} /></Link></li>
+              <li><NavLink to=''><FontAwesomeIcon icon={faHeart} /></NavLink></li>
+              <li><NavLink to='/modules/Profitratio/Profitratio'><FontAwesomeIcon icon={faShoppingCart} /></NavLink></li>
+              <li><NavLink to='/modules/Notifications/Notifications'><FontAwesomeIcon icon={faBell} /></NavLink></li>
+              <li><NavLink to='/modules/SignUp/Signup'><FontAwesomeIcon icon={faUser} /></NavLink></li>
             </ul>
+
+            <div>
+             
+            </div>
           </div>
         </section>
       </div>

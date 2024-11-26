@@ -1,14 +1,22 @@
 // src/store.js
 
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from '../Reducers/UserSlice';
-import cardsReducer from '../Reducers/StoriesSlices';
-
+import loginReducer from '../Reducers/LoginSlice';
+import signUpReducer from '../Reducers/SignUpSlice'; // استيراد الـ Signup Reducer
+import forgetPassword from '../Reducers/ForgetPassSlice'
+import resetPassword from '../Reducers/ResetPass'
+import otpverify from '../Reducers/verifySlice'
+import accountReducer from '../Reducers/AccountSlice'
+import profite from '../Reducers/Profit'
 const store = configureStore({
   reducer: {
-    user: userReducer,
-    cards: cardsReducer,
-    // ممكن تضيف reducers تانية هنا لو عندك
+    login: loginReducer,
+    otpverify :otpverify ,
+    forgetPassword : forgetPassword ,
+    resetPassword : resetPassword ,
+    signup: signUpReducer, // إضافة الـ Signup Reducer هنا
+    account: accountReducer,
+    profite : profite ,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from '../../components/Navbar/Navbar';
+import { fetchLogout } from "../../Statemanagment/Reducers/LoginSlice";
+import { clearUser, fetchAccountDetails } from "../../Statemanagment/Reducers/AccountSlice";
 import PropTypes from "prop-types";
 import { SidePay, SidePay2, Optionpay, OperationsData, Optionpaybranch, OptionDeposit } from '../../Constant/index';
 import Footer from '../../components/Footer/Footer';
@@ -9,8 +12,72 @@ import { Link, useLocation } from 'react-router-dom';
 
 
 
+// export const AdminOptions = () => {
+//     const [selectedOption, setSelectedOption] = useState("");
+
+//     const handleSelectChange = (event) => {
+//         const selectedValue = event.target.value;
+//         setSelectedOption(selectedValue);
+
+//         // تنفيذ الإجراء بناءً على الخيار المختار
+//         if (selectedValue === "logout") {
+//             console.log("تسجيل الخروج"); // هنا ممكن تضيف دالة تسجيل الخروج
+//         } else if (selectedValue === "deleteAccount") {
+//             console.log("حذف حساب شخص محدد");
+//         } else if (selectedValue === "manageDatabase") {
+//             console.log("إدارة قاعدة البيانات");
+//         }
+//     };
+
+//     return (
+//         <div className="flex items-center justify-center mt-4">
+//             <select
+//                 value={selectedOption}
+//                 onChange={handleSelectChange}
+//                 className="bg-gray-300 text-black px-4 py-2 rounded cursor-pointer hover:bg-red-500 transition-colors"
+//             >
+//                 <option value="" disabled>
+//                     اختر الإجراء
+//                 </option>
+//                 <option value="logout">تسجيل خروج</option>
+//                 <option value="deleteAccount">حذف حساب شخص محدد</option>
+//                 <option value="manageDatabase">إدارة قاعدة البيانات</option>
+//             </select>
+
+//             {/* روابط تنقل للمستخدم (اختياري لو عايز تضيفها مع المنطق) */}
+//             {selectedOption === "logout" && (
+//                 <Link to="/Pages/UserSection/User" className="hidden">
+//                     {/* هذا الرابط مجرد placeholder في حال أردت تنقل */}
+//                 </Link>
+//             )}
+//             {selectedOption === "deleteAccount" && (
+//                 <Link to="/modules/DeletCustomer/DeletCustomer" className="hidden"></Link>
+//             )}
+//             {selectedOption === "manageDatabase" && (
+//                 <Link to="/Pages/Tabledatabase/Table" className="hidden"></Link>
+//             )}
+//         </div>
+//     );
+// };
 export const Payingdata = ({ PayingdataProp }) => {
+    const dispatch = useDispatch();
     const location = useLocation();
+    const { accountDetails, error, loading } = useSelector((state) => state.account);
+
+    useEffect(() => {
+        if (!accountDetails || Object.keys(accountDetails).length === 0) {
+            dispatch(fetchAccountDetails());
+        }
+    }, [dispatch, accountDetails]);
+
+    const handleLogout = () => {
+        dispatch(fetchLogout());
+        dispatch(clearUser());
+    };
+
+
+
+    if (loading) return <p>Loading...</p>;
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10  items-start'>
@@ -25,8 +92,9 @@ export const Payingdata = ({ PayingdataProp }) => {
                         <ul className='flex flex-col items-start'>
                             <Link to={payprop.Link}>
                                 <li
-                                    className={`flex p-1 gap-3 items-center ${isActive ? 'text-red-500' : 'hover:text-red-500 focus:text-red-500'}`}
-                                >
+                                    onClick={payprop.head === "تسجيل خروج" ? handleLogout : null}
+                                    className={`flex p-1 gap-3 items-center ${isActive ? "text-red-500" : "hover:text-red-500 focus:text-red-500"
+                                        }`}                                >
                                     <img
                                         className={`p-1 rounded-md ${isActive ? 'bg-red-500' : 'bg-gray-500 hover:bg-red-500 focus:bg-red-500'}`}
                                         src={payprop.img}
@@ -49,6 +117,7 @@ export const Payingdata = ({ PayingdataProp }) => {
         </div>
     );
 };
+
 
 const Payingdata2 = ({ PayingdataProp2 }) => {
     const [tripType, setTripType] = useState('Pay'); // 'one-way' or 'round-trip'

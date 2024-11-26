@@ -12,8 +12,9 @@ const Sectionsdata = ({ Sectionprop }) => {
         {Sectionprop.map((dataprop) => {
           return (
             <>
-              <div key={dataprop.id} className=" w-40 flex flex-col col-span-2 md:col-span-2  items-center justify-center gap-3 border border-solid border-gray-300 cursor-pointer hover:text-white hover:bg-[#C54442] rounded-md p-5 ">
-                <img src={dataprop.icon} alt="" className=" hover:filter hover:invert" />
+              <div key={dataprop.id} className=" Up w-40 flex flex-col col-span-2 md:col-span-2  items-center justify-center gap-3 border border-solid border-gray-300 cursor-pointer hover:text-white hover:bg-[#C54442] groub rounded-md p-5 ">
+                <img src={dataprop.icon} alt="" className=" img p-3" />
+                {/* padding هنا عشان لما يحصل hover يقد انه يستوعب ال حجم  */}
                 <h2>{dataprop.title}</h2>
               </div>
             </>

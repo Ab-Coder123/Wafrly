@@ -1,43 +1,59 @@
-import axios from "axios";
+import axios from 'axios';
 
-// إعداد الـ base URL الأساسي لكل الـ APIs
-const api = axios.create({
-  baseURL: "", // الاساسي Url هنا هنحط ال
+// إعداد axiosInstance
+const API_URL = 'https://Admin.afirly.net/api';
+
+const axiosInstance = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'Authorization': `Bearer ${localStorage.getItem('token')}`, // افترضنا أن التوكن موجود في الـ localStorage
+    'Content-Type' : 'application/json'
+  },
 });
 
-api.interceptors.request.use(
-  (config) => {
-    return config;
+const axiosauth = axios.create({
+  baseURL: API_URL,
+  headers: {
+    
+    'Content-Type' : 'application/json'
+
   },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+});
 
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // معالجة الأخطاء ال هتظهر
-    return Promise.reject(error);
-  }
-);
-
-// objects و هتكون علي هيئه  fetchs  هنا ال هنحط ال
-
-// تنظيم الـ endpoints
+// API functions باستخدام axiosInstance
 const apiFetches = {
-  users: {
-    // fetchAll: () => api.get("/users"),
-    //   fetchById: (id) => api.get(`/users/${id}`)
+  authLogin: {
+    login: (credentials) => axiosauth.post("/login", credentials), // إرسال بيانات تسجيل الدخول
+  },
+  forgetPassword: {
+    forgetPassword: (email) => axiosauth.post("/forgot-password", { email }), // طلب إعادة تعيين كلمة السر
+  },
+  resetPassword: {
+    resetPassword: (data) => axiosauth.post("/reset-password", data), // إعادة تعيين كلمة السر
+  },
+  otpVerify: {
+    otpVerify: (otp) => axiosInstance.post("/verify", { otp }), // التحقق من OTP
+  },
+  authSignUp: {
+    signUp: (formData) => axiosauth.post("/register", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // تعيين الهيدر لتحديد نوع البيانات عند رفع الملفات
+      },
+    }), // إرسال بيانات التسجيل
+  },
+  authLogout: {
+    logout: () => axiosInstance.post("/logout"), // إرسال طلب تسجيل الخروج
+  },
+  profite: {
+    profite: () => axiosInstance.get("/profite"), // إرسال طلب تسجيل الخروج
+  },
+  userAccounts: {
+    getAccountUser: () => axiosInstance.get(`/get-user`), // الحصول على تفاصيل حساب معين
+  },
 
-    // دوال تانية لو محتاج
+  Updateuser: {
+    UpdateUser: () => axiosauth.post(`/update`), // الحصول على تفاصيل حساب معين
   },
-  cards: {
-    //  fetchAll: () => api.get("/cards"),
-    //  fetchById: (id) => api.get(`/cards/${id}`)
-    // دوال تانية لو محتاج
-  },
-  // ممكن تضيف أقسام تانية زي offers, prices...
 };
 
 export default apiFetches;
