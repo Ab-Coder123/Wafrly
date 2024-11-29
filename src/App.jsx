@@ -21,6 +21,9 @@ import ForgetPassword from './modules/ForgetPass/ForgetPass';
 import ResetPassword from './modules/ResetPass/ResetPass';
 import OtpVerificationPage from './modules/Verify/Verify';
 import Tabledatabase from './modules/Table/Table';
+import OrderConfirmation from './modules/Orderform/Orderform';
+import PaymentMethods from './modules/CreateAccount/Account';
+import UserAccounts from './modules/AccoutsUser/AccUser';
 
 function App() {
   // تعريف الرواتر
@@ -29,6 +32,18 @@ function App() {
       path: '/',
       element: <HomePage />,
     },
+    {
+      path : '/modules/Orderform/Orderform' , 
+      element: <OrderConfirmation /> ,
+    } ,
+    {
+      path : '/modules/AccoutsUser/AccUse' , 
+      element: <UserAccounts/> ,
+    } ,
+    {
+      path : '/modules/CreateAccount/Account' , 
+      element: <PaymentMethods /> ,
+    } ,
     {
       path : '/modules/Login/Login' , 
       element: <Login /> ,

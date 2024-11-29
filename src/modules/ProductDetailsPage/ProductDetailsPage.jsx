@@ -201,10 +201,12 @@ const ProductControls = () => {
       </div>
 
       {/* زر اشترِ الآن */}
-      <Link to =''></Link>     
+      <Link to ='/modules/Orderform/Orderform'>
       <button className="bg-red-500 text-white py-2 px-6 rounded-lg hover:bg-red-600">
         اشترِ الآن
       </button>
+      </Link>     
+    
 
       {/* زر القلب */}
       <button className="border-2 border-black p-2 rounded-lg">

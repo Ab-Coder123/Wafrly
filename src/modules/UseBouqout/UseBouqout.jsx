@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UseBouqoutdatas, SidePay } from "../../Constant/index";
 import PropTypes from "prop-types";
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import { Payingdata } from '../Paying/Paying';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPlans } from '../../Statemanagment/Reducers/SubscripeSlice';
 
 
 
 
 
 const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
+    const dispatch = useDispatch();
+    const { plans, status, error } = useSelector((state) => state.plans);
+
+    useEffect(() => {
+        dispatch(fetchPlans()); // استدعاء جلب البيانات عند التحميل
+    }, [dispatch]);
+
+    // if (status === 'loading' || status === 'failed') {
+    //     return (
+    //         <div>
+    //             {status === 'loading' && <p>جاري التحميل...</p>}
+    //             {status === 'failed' && <p>حدث خطأ: {error}</p>}
+    //         </div>
+    //     );
+    // }
+
+    const description = plans.data?.description || "لا توجد بيانات";
+    const monthlyPrice = plans.data?.monthly_price || "غير متوفر";
+    const yearlyPrice = plans.data?.yearly_price || "غير متوفر";
+
+
     const [balance, setBalance] = useState(50); // القيمة الحالية للمحفظة (مثال)
     const UseBouqout1 = UseBouqoutdataProp.find((UseBouqoutprop) => UseBouqoutprop.id === '1');
     const UseBouqout2 = UseBouqoutdataProp.find((UseBouqoutprop) => UseBouqoutprop.id === '2');
@@ -36,6 +58,8 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
 
 
                         {/* div2  */}
+
+
                         <div className=' col-span-10 border border-[#C54442] border-solid border-2 p-4 rounded-xl '>
 
                             <div className='py-5 flex items-start gap-40 items-start'>
@@ -50,7 +74,11 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                             {/* line */}
                             <div className='mb-5 w-full h-0.5 bg-gray-300'></div>
                             <div className='flex flex-col gap-y-5'>
-                                <p className='text-gray-400'>{UseBouqout1.prah}</p>
+                                <p className='text-gray-400'>                         {plans.data?.map((plan) => {
+                                    <span className='text-[#C54442] font-bold'>{plan.description}ر.ل / شهريا </span>
+                                })
+
+                                }</p>
                                 <div className=''>
                                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 gap-3 items-center'>
                                         {/* progress */}
@@ -97,7 +125,11 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                                     <h2 className='font-bold text-black text-l'>{UseBouqout2.cardhead1}</h2>
                                 </div>
                                 <div className='col-span-2 text-center'>
-                                    <span className='text-[#C54442] font-bold'>{UseBouqout2.cardspan1}</span>
+                                    {plans.data?.map((plan) => {
+                                        <span className='text-[#C54442] font-bold'>{plan.monthly_price}ر.ل / شهريا </span>
+                                    })
+
+                                    }
                                 </div>
                             </div>
 
@@ -131,7 +163,11 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                                     <h2 className='font-bold text-black text-l'>{UseBouqout2.cardhead2}</h2>
                                 </div>
                                 <div className='col-span-2 text-center'>
-                                    <span className='text-[#C54442] font-bold'>{UseBouqout2.cardspan2}</span>
+                                    {plans.data?.map((plan) => {
+                                        <span className='text-[#C54442] font-bold'>{plan.yearly_price}ر.ل / شهريا </span>
+                                    })
+
+                                    }
                                 </div>
                             </div>
 
@@ -163,6 +199,10 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
 
         </>
     );
+
+
+
+
 }
 
 const ProgressBar = ({ value, max, className }) => {
@@ -215,7 +255,7 @@ const UseBouqout = () => {
         <>
             <Navbar />
             <div className='font-cairo overflow-hidden'>
-            <section className='  font-cairo overflow-hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
+                <section className='  font-cairo overflow-hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 px-0 sm:px-24 py-10'>
                     <div className=' col-span-5 lg:col-span-3'>
                         <Payingdata PayingdataProp={SidePay} />
                     </div>

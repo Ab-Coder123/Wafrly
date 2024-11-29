@@ -12,53 +12,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 
 
-// export const AdminOptions = () => {
-//     const [selectedOption, setSelectedOption] = useState("");
-
-//     const handleSelectChange = (event) => {
-//         const selectedValue = event.target.value;
-//         setSelectedOption(selectedValue);
-
-//         // تنفيذ الإجراء بناءً على الخيار المختار
-//         if (selectedValue === "logout") {
-//             console.log("تسجيل الخروج"); // هنا ممكن تضيف دالة تسجيل الخروج
-//         } else if (selectedValue === "deleteAccount") {
-//             console.log("حذف حساب شخص محدد");
-//         } else if (selectedValue === "manageDatabase") {
-//             console.log("إدارة قاعدة البيانات");
-//         }
-//     };
-
-//     return (
-//         <div className="flex items-center justify-center mt-4">
-//             <select
-//                 value={selectedOption}
-//                 onChange={handleSelectChange}
-//                 className="bg-gray-300 text-black px-4 py-2 rounded cursor-pointer hover:bg-red-500 transition-colors"
-//             >
-//                 <option value="" disabled>
-//                     اختر الإجراء
-//                 </option>
-//                 <option value="logout">تسجيل خروج</option>
-//                 <option value="deleteAccount">حذف حساب شخص محدد</option>
-//                 <option value="manageDatabase">إدارة قاعدة البيانات</option>
-//             </select>
-
-//             {/* روابط تنقل للمستخدم (اختياري لو عايز تضيفها مع المنطق) */}
-//             {selectedOption === "logout" && (
-//                 <Link to="/Pages/UserSection/User" className="hidden">
-//                     {/* هذا الرابط مجرد placeholder في حال أردت تنقل */}
-//                 </Link>
-//             )}
-//             {selectedOption === "deleteAccount" && (
-//                 <Link to="/modules/DeletCustomer/DeletCustomer" className="hidden"></Link>
-//             )}
-//             {selectedOption === "manageDatabase" && (
-//                 <Link to="/Pages/Tabledatabase/Table" className="hidden"></Link>
-//             )}
-//         </div>
-//     );
-// };
 export const Payingdata = ({ PayingdataProp }) => {
     const dispatch = useDispatch();
     const location = useLocation();
@@ -92,7 +45,6 @@ export const Payingdata = ({ PayingdataProp }) => {
                         <ul className='flex flex-col items-start'>
                             <Link to={payprop.Link}>
                                 <li
-                                    onClick={payprop.head === "تسجيل خروج" ? handleLogout : null}
                                     className={`flex p-1 gap-3 items-center ${isActive ? "text-red-500" : "hover:text-red-500 focus:text-red-500"
                                         }`}                                >
                                     <img
@@ -110,8 +62,11 @@ export const Payingdata = ({ PayingdataProp }) => {
                 );
             })}
             <div>
-                <button className='col-span-10 w-40 p-1 rounded-md bg-gray-400 text-white hover:text-red-500 focus:text-red-500 active:text-red-500'>
+                <button className='col-span-10 w-40 p-1 mb-5 rounded-md bg-gray-400 text-white hover:text-red-500 focus:text-red-500 active:text-red-500'>
                     تغيير كلمة المرور
+                </button>
+                <button onClick={() => handleLogout()} className='col-span-10 w-40 p-1 rounded-md bg-gray-400 text-white hover:text-red-500 focus:text-red-500 active:text-red-500'>
+                    تسجيل خروج
                 </button>
             </div>
         </div>

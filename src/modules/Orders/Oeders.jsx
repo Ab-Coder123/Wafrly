@@ -7,240 +7,152 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchGetallOrder } from '../../Statemanagment/Reducers/GetOrderSlice';
 
-const Ordersdatas = ({ OrdersPropdata }) => {
+const Ordersdatas = () => {
+    const dispatch = useDispatch();
+    // الحصول على الطلبات من الـ Redux store
+    const { orders, loading, error } = useSelector((state) => state.getorders);
+    console.log(orders?.customer_name);
+    const [change, setChange] = useState('1');
 
-    const [change, setChange] = useState('load')
+    useEffect(() => {
+        // جلب الطلبات بناءً على الحالة الافتراضية (قيد التنفيذ)
+        dispatch(fetchGetallOrder());
+    }, [dispatch]);
 
-    // three state to change cards values 
+    // عند تغيير الحالة
+    const handleStateChange = (stateId) => {
+        setChange(stateId);
+        const statusMapping = {
+            '1': '1', // قيد التنفيذ
+            '2': '2', // اكتملت
+            '3': '3', // تم إلغاؤها
+        };
+        // إرسال الطلب إلى الـ API لجلب البيانات المتعلقة بالحالة
+    dispatch(fetchGetallOrder(statusMapping[stateId]));
+};
+return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 px-4 sm:px-8">
+        {/* Header */}
+        <div className="col-span-8 flex flex-row justify-start gap-4 pt-12 lg:py-3">
+            <img src={img1} className="h-10" alt="Logo" />
+            <h2 className="mb-12 text-4xl font-bold text-gray-800">
+                {change === '1' ? 'الطلبات قيد التنفيذ' : change === '2' ? 'الطلبات المكتملة' : 'الطلبات الملغاة'} 
+                ({orders.length})
+            </h2>
+        </div>
 
-    const [state1, setState1] = useState(true);
-    const [state2, setState2] = useState(false);
-    const [state3, setState3] = useState(false);
+        {/* Buttons */}
+        <div className="col-span-8 py-10 w-full">
+            <div className="flex items-start justify-start text-center gap-1">
+                {['1', '2', '3'].map((stateId) => (
+                    <div
+                        key={stateId}
+                        className={`w-52 p-2 rounded-md border border-1 border-gray-300 ${
+                            change === stateId ? 'bg-[#C54442] text-white' : 'bg-white text-gray-400'
+                        }`}
+                    >
+                        <button onClick={() => handleStateChange(stateId)} className="font-bold">
+                            {stateId === '1' ? 'طلبات قيد التنفيذ' : stateId === '2' ? 'طلبات اكتملت' : 'طلبات تم الغاؤها'}
+                        </button>
+                    </div>
+                ))}
+            </div>
+            <h2>{orders.customer_name}</h2>
+        </div>
 
-    // /functions to change state 
-
-    const State1 = () => {
-        setState1(true);
-        setState2(false);
-        setState3(false);
-
-    }
-
-
-    const State2 = () => {
-        setState1(false);
-        setState2(true);
-        setState3(false);
-
-    }
-
-    const State3 = () => {
-        setState1(false);
-        setState2(false);
-        setState3(true);
-
-    }
-
-
-    return (
-        <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 px-4 sm:px-8'>
-
-                <div className=" col-span-8 flex flex-row justify-start gap-4 pt-12 lg:py-3">
-                    <img src={img1} className="h-10" alt="" />
-                    <h2 className="mb-12 text-4xl font-bold text-gray-800">
-                        الطلبات النشطه(8)
+        {/* الطلبات */}
+        {loading && <p>جاري تحميل البيانات...</p>}
+        {error && <p className="text-red-500">حدث خطأ: {error}</p>}
+        {Array.isArray(orders) && orders.length > 0 ? (
+        orders.map((order) => (
+        <div
+            key={order.id}
+            className="w-96 sm:w-full font-bold py-2 col-span-10 border mb-3 shadow shadow-md border-1 border-gray-100 rounded-md"
+        >
+            <div className="grid grid-cols-1 sm:grid-cols-8 md:grid-cols-10 gap-2">
+                <img
+                    className="h-22 col-span-1 px-2 rounded-md"
+                    src={order.imgproduct}
+                    alt={order.customer_name}
+                />
+                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
+                    <h2
+                        className={`${
+                            order.state1 === 'red'
+                                ? 'text-[#C54442]'
+                                : order.state1 === 'green'
+                                ? 'text-[#01B051]'
+                                : 'text-black'
+                        }`}
+                    >
                     </h2>
+                    <span>{order.section}</span>
                 </div>
-                {/* table */}
-                <div className='col-span-8 py-10 w-full '>
-                    <div className='flex items-start justify-start text-center gap-1'>
-                        <div className={`w-52 p-2 rounded-md  border border-1 border-gray-300 ${change === 'load' ? 'bg-[#C54442] text-white' : ' bg-white text-gray-400'}`}>
-                            <button onClick={() => { setChange('load'); State1(); }} className='font-bold '>طلبات قيد التنفيذ</button>
-                        </div>
-                        <div className={`w-52 p-2 rounded-md   border border-1 border-gray-300 ${change === 'done' ? 'bg-[#C54442] text-white' : ' bg-white text-gray-400'}`}>
-                            <button onClick={() => { setChange('done'); State2(); }} className='font-bold'>طلبات اكتملت</button>
-                        </div>
-                        <div className={` w-52 p-2 rounded-md border border-1 border-gray-300 ${change === 'not' ? 'bg-[#C54442] text-white' : ' bg-white text-gray-400'}`}>
-                            <button onClick={() => { setChange('not'); State3(); }} className='font-bold'>طلبات تم الغائها</button>
-                        </div>
+                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
+                    <h2>الاسم </h2>
+                    <div>
+                        <img src={order.orderimg} alt="Order" />
+                        <span>{order.customer_name}</span>
                     </div>
                 </div>
 
-                {state1 &&
-                    (
-                        OrdersPropdata.map((Orderspropdata) => {
-                            return (
+                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
+                    <h2>العنوان</h2>
+                    <span>{order.street}</span>
+                </div>
 
-                                <div className=' w-96 sm:w-full   font-bold py-2 col-span-10 border mb-3 shadow shadow-md border-1 border-gray-100 rounded-md' key={Orderspropdata.id}>
-                                    <div className=' grid grid-cols-1 sm:grid-cols-8 md:grid-cols-10 gap-2 '>
-                                        <img className='h-22 col-span-1 px-2 rounded-md' src={Orderspropdata.imgproduct} alt="" />
-                                        <div className='flex flex-col col-span-3  md:col-span-2  bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>{Orderspropdata.nameproduct}</h2>
-                                            <span>{Orderspropdata.section}</span>
-                                        </div>
-                                        <div className='flex flex-col col-span-3  md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>السعر</h2>
-                                            <div>
-                                                <img src={Orderspropdata.orderimg} alt="" />
-                                                <span>اسم المشتري </span>
-                                            </div>
-                                        </div>
-                                        <div className='flex flex-col col-span-3 md:col-span-2  bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>لعنوان</h2>
-                                            <span>العنوان هنا</span>
-                                        </div>
-                                        <div className='flex flex-col col-span-3  md:col-span-2 w-full bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>حاله الطلب</h2>
-                                            <span
-                                                className={`w-40 md:w-full  text-white text-center rounded-md p-1  font-bold ${Orderspropdata.state1 === 'red' ? 'bg-[#C54442]' : Orderspropdata.state1 === 'green' ? 'bg-[#01B051]' : 'bg-black'}`}
-                                            >
-                                                {Orderspropdata.state1 === 'red' ? 'قيد التنفيذ' : Orderspropdata.state1 === 'green' ? 'اكتملت' : 'تم الغاؤها'}
-                                            </span>
-                                        </div>
-                                        <div className='col-span-3 md:col-span-1  px-10'>
-                                            <button >
-                                                <ThreeDotsIcon />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })
+                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
+                    <h2>السعر</h2>
+                    <span>{order.order_total_price}</span>
+                </div>
 
-                    )
-
-                }
-
-
-                {state2 &&
-                    (
-                        OrdersPropdata
-                            .filter((Orderspropdata) => Orderspropdata.state1 === 'green')
-                            .map((Orderspropdata) => {
-                                return (
-
-                                    <div className=' w-96 sm:w-full   font-bold py-2 col-span-10 border mb-3 shadow shadow-md border-1 border-gray-100 rounded-md' key={Orderspropdata.id}>
-                                    <div className=' grid grid-cols-1 sm:grid-cols-8 md:grid-cols-10 gap-2 '>
-                                        <img className='h-22 col-span-1 px-2 rounded-md' src={Orderspropdata.imgproduct} alt="" />
-                                        <div className='flex flex-col col-span-3  md:col-span-2  bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>{Orderspropdata.nameproduct}</h2>
-                                            <span>{Orderspropdata.section}</span>
-                                        </div>
-                                        <div className='flex flex-col col-span-3  md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>السعر</h2>
-                                            <div>
-                                                <img src={Orderspropdata.orderimg} alt="" />
-                                                <span>اسم المشتري </span>
-                                            </div>
-                                        </div>
-                                        <div className='flex flex-col col-span-3 md:col-span-2  bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>لعنوان</h2>
-                                            <span>العنوان هنا</span>
-                                        </div>
-                                        <div className='flex flex-col col-span-3  md:col-span-2 w-full bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>حاله الطلب</h2>
-                                            <span
-                                                className={`w-40 md:w-full  text-white text-center rounded-md p-1  font-bold ${Orderspropdata.state1 === 'red' ? 'bg-[#C54442]' : Orderspropdata.state1 === 'green' ? 'bg-[#01B051]' : 'bg-black'}`}
-                                            >
-                                                {Orderspropdata.state1 === 'red' ? 'قيد التنفيذ' : Orderspropdata.state1 === 'green' ? 'اكتملت' : 'تم الغاؤها'}
-                                            </span>
-                                        </div>
-                                        <div className='col-span-3 md:col-span-1  px-10'>
-                                            <button >
-                                                <ThreeDotsIcon />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                )
-                            })
-
-                    )
-
-                }
-
-
-                {state3 &&
-                    (
-                        OrdersPropdata
-                            .filter((Orderspropdata) => Orderspropdata.state1 === 'black')
-                            .map((Orderspropdata) => {
-                                return (
-
-                                
-                                    <div className=' w-96 sm:w-full   font-bold py-2 col-span-10 border mb-3 shadow shadow-md border-1 border-gray-100 rounded-md' key={Orderspropdata.id}>
-                                    <div className=' grid grid-cols-1 sm:grid-cols-8 md:grid-cols-10 gap-2 '>
-                                        <img className='h-22 col-span-1 px-2 rounded-md' src={Orderspropdata.imgproduct} alt="" />
-                                        <div className='flex flex-col col-span-3  md:col-span-2  bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>{Orderspropdata.nameproduct}</h2>
-                                            <span>{Orderspropdata.section}</span>
-                                        </div>
-                                        <div className='flex flex-col col-span-3  md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>السعر</h2>
-                                            <div>
-                                                <img src={Orderspropdata.orderimg} alt="" />
-                                                <span>اسم المشتري </span>
-                                            </div>
-                                        </div>
-                                        <div className='flex flex-col col-span-3 md:col-span-2  bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>لعنوان</h2>
-                                            <span>العنوان هنا</span>
-                                        </div>
-                                        <div className='flex flex-col col-span-3  md:col-span-2 w-full bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2'>
-                                            <h2 className={`${Orderspropdata.state1 === 'red' ? 'text-[#C54442]' : Orderspropdata.state1 === 'green' ? 'text-[#01B051]' : 'text-black'}`}>حاله الطلب</h2>
-                                            <span
-                                                className={`w-40 md:w-full  text-white text-center rounded-md p-1  font-bold ${Orderspropdata.state1 === 'red' ? 'bg-[#C54442]' : Orderspropdata.state1 === 'green' ? 'bg-[#01B051]' : 'bg-black'}`}
-                                            >
-                                                {Orderspropdata.state1 === 'red' ? 'قيد التنفيذ' : Orderspropdata.state1 === 'green' ? 'اكتملت' : 'تم الغاؤها'}
-                                            </span>
-                                        </div>
-                                        <div className='col-span-3 md:col-span-1  px-10'>
-                                            <button >
-                                                <ThreeDotsIcon />
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                )
-                            })
-
-                    )
-
-                }
+                <div className="flex flex-col col-span-3 md:col-span-2 w-full bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
+                    <h2>حالة الطلب</h2>
+                    <span
+                        className={`w-40 md:w-full text-white text-center rounded-md p-1 font-bold ${
+                            order.state1 === 'red'
+                                ? 'bg-[#C54442]'
+                                : order.state1 === 'green'
+                                ? 'bg-[#01B051]'
+                                : 'bg-black'
+                        }`}
+                    >
+                        {order.state1 === 'red'
+                            ? 'قيد التنفيذ'
+                            : order.state1 === 'green'
+                            ? 'اكتملت'
+                            : 'تم الغاؤها'}
+                    </span>
+                </div>
+                <div className="col-span-3 md:col-span-1 px-10">
+                    <button>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </button>
+                </div>
             </div>
-
-        </>
-    );
-}
-
-
-const ThreeDotsIcon = () => {
-    return (
-        <div >
-            <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
         </div>
-    );
+    ))
+) : (
+    <p className="text-center text-gray-500">لا توجد طلبات حالياً</p>
+)}
+
+    </div>
+);
 };
 
 
+// const ThreeDotsIcon = () => {
+//     return (
+//         <div >
+//             <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
+//         </div>
+//     );
+// };
 
-Ordersdatas.propTypes = {
-    OrdersPropdata: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            imgproduct: PropTypes.string.isRequired,
-            orderimg: PropTypes.string.isRequired,
-            nameproduct: PropTypes.string.isRequired,
-            section: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
-            profile: PropTypes.string.isRequired,
-            state: PropTypes.string.isRequired,
-            state1: PropTypes.string.isRequired,
-        })
-    ).isRequired,
-};
 
 Payingdata.propTypes = {
     PayingdataProp: PropTypes.arrayOf(
@@ -263,7 +175,7 @@ const Oeders = () => {
                     <Payingdata PayingdataProp={SidePay} />
                 </div>
                 <div className=' col-span-12 lg:col-span-9'>
-                    <Ordersdatas OrdersPropdata={Ordersdata} />
+                    <Ordersdatas  />
                 </div>
             </section>
             <Footer />

@@ -8,6 +8,12 @@ import resetPassword from '../Reducers/ResetPass'
 import otpverify from '../Reducers/verifySlice'
 import accountReducer from '../Reducers/AccountSlice'
 import profite from '../Reducers/Profit'
+import Order from '../Reducers/OrderSlice'
+import getallorder from '../Reducers/GetOrderSlice'
+import complainSlice from '../Reducers/Compilain' 
+import paymentMethodsSlice from '../Reducers/PostAccSlice'
+import accountsSlice from '../Reducers/AccountSlice'
+import plansSlice from '../Reducers/SubscripeSlice'
 const store = configureStore({
   reducer: {
     login: loginReducer,
@@ -17,6 +23,12 @@ const store = configureStore({
     signup: signUpReducer, // إضافة الـ Signup Reducer هنا
     account: accountReducer,
     profite : profite ,
+    postorder : Order ,
+    getorders : getallorder ,
+    complains : complainSlice ,
+    paymentMethods : paymentMethodsSlice ,
+    UserAccounts : accountsSlice ,
+    plans : plansSlice ,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

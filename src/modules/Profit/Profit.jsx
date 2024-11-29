@@ -41,23 +41,43 @@ const Profitdatas = () => {
                             <p>جاري تحميل البيانات...</p>
                         ) : error ? (
                             <p className="text-red-600">{error}</p>
-                        ) : (
-                            // مباشرة إظهار البيانات دون التحقق من الطول
-                            profiteData.data.map((Profitprop) => (
-                                <div key={Profitprop.id} className={`flex justify-between items-center mb-4 shadow shadow-md p-5 ${Profitprop.bg === 'green' ? 'bg-green-600 text-white' : 'bg-gray-200 '}`}>
-                                    <div className='flex justify-start items-center gap-4'>
-                                        <h2>{Profitprop.pending_profit}</h2>
+                        ) : profiteData?.data ? (
+                            <div className='flex flex-col gap-y-4'>
+                                <div className="shadow shadow-md p-5 flex items-start justify-between bg-gray-200 rounded-md">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <img src="" alt="" />
+                                        <h2 className="font-bold ">
+                                            الارباح المتوقعه
+                                        </h2>
                                     </div>
-                                    <div>
-                                        <span className={`${Profitprop.bg === 'green' ? 'text-white' : 'text-red-600'} font-bold`}>
-                                            {Profitprop.finished_profi}
+                                    <div className="flex justify-between items-center">
+                                        <span className={`font-bold   ${profiteData.data.bg === 'green' ? 'text-green-600' : 'text-red-600'}`}>
+                                            {profiteData.data.pending_profit || "لا توجد أرباح متاحه."}
                                         </span>
                                     </div>
                                 </div>
-                            ))
+
+                                <div className="shadow shadow-md p-5 flex items-start justify-between bg-green-600 rounded-md">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <img src="" alt="" />
+                                        <h2 className="font-bold text-white ">
+                                           اجمالي الارباح
+                                        </h2>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className='font-bold text-white '>
+                                            {profiteData.data.finished_profit|| "لا توجد أرباح منتهية."}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        ) : (
+                            <p>لا توجد بيانات لعرضها.</p>
                         )}
+
                     </div>
-                    {/* <h2>{profiteData?.data.pending_profit}</h2> */}
                 </div>
             </div>
         </>

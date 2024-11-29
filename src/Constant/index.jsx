@@ -173,6 +173,13 @@ const SidePay = [
     head: 'طلباتي ' ,
     Link: '/modules/Orders/Oeders' ,
   },
+
+  {
+    id: '6',
+    img: imgs.Sideicon2,
+    head: 'حسباتي ' ,
+    Link: '/modules/AccoutsUser/AccUse' ,
+  },
   {
     id: '3',
     img: imgs.Sideicon3,
@@ -191,12 +198,7 @@ const SidePay = [
     head: 'المحفظة ' ,
     Link : '/modules/Paying/Paying' ,
   },
-  {
-    id: '6',
-    img: imgs.Sideicon5,
-    head: 'تسجيل خروج '  ,
-    Link : '/'
-  },
+ 
 
 ]
 
@@ -418,7 +420,7 @@ const UseBouqoutdatas= [
       cardhead1 : 'الباقي الفضية' ,
 
       // card1
-      cardhead2 : 'الباقي الذهبية' ,
+      cardhead2 : 'الباقه الذهبية' ,
       cardimg2 : imgs.cardimg2 ,
       cardspan2 : '90.00 ر.ل / شهريا ',
       cardprah2 : 'أصلي مع 1000 منتج من العديد من العلامات التجارية المختلفة في جميع أنحاء العالم.' ,

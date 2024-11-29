@@ -7,6 +7,7 @@ export const fetchLogin = createAsyncThunk('auth/fetchLogin', async (credentials
         const response = await apiFetches.authLogin.login(credentials);
         console.log("Response:", response.data); // تحقق من البيانات
         localStorage.setItem('token', response.data.data.authToken);        
+        // window.location.reload()
         return response.data;
     } catch (error) {
         console.error("Error:", error.response.data); // طباعة الخطأ
@@ -16,6 +17,7 @@ export const fetchLogin = createAsyncThunk('auth/fetchLogin', async (credentials
 
 // دالة logout باستخدام createAsyncThunk
 export const fetchLogout = createAsyncThunk('auth/fetchLogout', async (credentials, thunkAPI) => {
+    console.log('sddsdsd')
     try {
         await apiFetches.authLogout.logout(credentials);
         localStorage.removeItem('token'); // أو أي مفتاح آخر
@@ -25,6 +27,8 @@ export const fetchLogout = createAsyncThunk('auth/fetchLogout', async (credentia
         return thunkAPI.rejectWithValue("Failed to logout");
     }
 });
+
+
 
 const authLogin = createSlice({
     name: 'authLogin',

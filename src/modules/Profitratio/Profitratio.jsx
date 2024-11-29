@@ -9,7 +9,6 @@ import { updateAccount } from "../../Statemanagment/Reducers/AccountSlice";  // 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PropTypes from "prop-types";
-
 import logo from '../../assets/Images/New folder/logo (1).png'
 
 

@@ -1,22 +1,20 @@
-import axios from 'axios';
+import axios from "axios";
 
 // إعداد axiosInstance
-const API_URL = 'https://Admin.afirly.net/api';
+const API_URL = "https://Admin.afirly.net/api";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
-    'Authorization': `Bearer ${localStorage.getItem('token')}`, // افترضنا أن التوكن موجود في الـ localStorage
-    'Content-Type' : 'application/json'
+    Authorization: `Bearer ${localStorage.getItem("token")}`, // افترضنا أن التوكن موجود في الـ localStorage
+    "Content-Type": "application/json",
   },
 });
 
 const axiosauth = axios.create({
   baseURL: API_URL,
   headers: {
-    
-    'Content-Type' : 'application/json'
-
+    "Content-Type": "application/json",
   },
 });
 
@@ -35,11 +33,12 @@ const apiFetches = {
     otpVerify: (otp) => axiosInstance.post("/verify", { otp }), // التحقق من OTP
   },
   authSignUp: {
-    signUp: (formData) => axiosauth.post("/register", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data", // تعيين الهيدر لتحديد نوع البيانات عند رفع الملفات
-      },
-    }), // إرسال بيانات التسجيل
+    signUp: (formData) =>
+      axiosauth.post("/register", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // تعيين الهيدر لتحديد نوع البيانات عند رفع الملفات
+        },
+      }), // إرسال بيانات التسجيل
   },
   authLogout: {
     logout: () => axiosInstance.post("/logout"), // إرسال طلب تسجيل الخروج
@@ -54,6 +53,45 @@ const apiFetches = {
   Updateuser: {
     UpdateUser: () => axiosauth.post(`/update`), // الحصول على تفاصيل حساب معين
   },
+
+
+  // order 
+  Postorder: {
+    Order: (formData) =>
+      axiosInstance.post("/orders", formData, {
+        
+      }),
+  },
+
+  orderStatus: {
+    Orderstatus: () => axiosInstance.get("/orderStatus"),
+  },
+
+  getallorders: {
+    allOrder: (statusId) => axiosInstance.get(`/orders?status_id=${statusId}`),
+  },
+
+
+  // compilain 
+
+  getcompilains: {
+    getcompilains: () => axiosInstance.get('/complain'),
+  },
+
+  getcompilain: {
+    getcompilain: (complainId) => axiosInstance.get(`/complain/${complainId}`),
+  }, 
+
+  postcompilains: {
+    postcompilains: (complainData) => axiosInstance.post('/complain' ,complainData),
+  }, 
+
+  Deletcompilains: {
+    Deletcompilains: (complainId) => axiosInstance.delete(`/complain/${complainId}`),
+  }, 
+
+  // account pay 
+  
 };
 
 export default apiFetches;
