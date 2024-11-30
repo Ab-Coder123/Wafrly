@@ -15,7 +15,7 @@ const Ordersdatas = () => {
     const dispatch = useDispatch();
     // الحصول على الطلبات من الـ Redux store
     const { orders, loading, error } = useSelector((state) => state.getorders);
-    console.log(orders?.customer_name);
+    console.log(orders);
     const [change, setChange] = useState('1');
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const Ordersdatas = () => {
     const handleStateChange = (stateId) => {
         setChange(stateId);
         const statusMapping = {
-            '1': '1', // قيد التنفيذ
+            '0': '0', // قيد التنفيذ
             '2': '2', // اكتملت
             '3': '3', // تم إلغاؤها
         };
@@ -36,122 +36,120 @@ const Ordersdatas = () => {
 };
 return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-8 gap-4 px-4 sm:px-8">
-        {/* Header */}
-        <div className="col-span-8 flex flex-row justify-start gap-4 pt-12 lg:py-3">
-            <img src={img1} className="h-10" alt="Logo" />
-            <h2 className="mb-12 text-4xl font-bold text-gray-800">
-                {change === '1' ? 'الطلبات قيد التنفيذ' : change === '2' ? 'الطلبات المكتملة' : 'الطلبات الملغاة'} 
-                ({orders.length})
-            </h2>
-        </div>
-
-        {/* Buttons */}
-        <div className="col-span-8 py-10 w-full">
-            <div className="flex items-start justify-start text-center gap-1">
-                {['1', '2', '3'].map((stateId) => (
-                    <div
-                        key={stateId}
-                        className={`w-52 p-2 rounded-md border border-1 border-gray-300 ${
-                            change === stateId ? 'bg-[#C54442] text-white' : 'bg-white text-gray-400'
-                        }`}
-                    >
-                        <button onClick={() => handleStateChange(stateId)} className="font-bold">
-                            {stateId === '1' ? 'طلبات قيد التنفيذ' : stateId === '2' ? 'طلبات اكتملت' : 'طلبات تم الغاؤها'}
-                        </button>
-                    </div>
-                ))}
+      {/* Header */}
+      <div className="col-span-8 flex flex-row justify-start gap-4 pt-12 lg:py-3">
+        <img src={img1} className="h-10" alt="Logo" />
+        <h2 className="mb-4 text-3xl font-bold text-gray-800">
+          {change === '1'
+            ? 'الطلبات قيد التنفيذ'
+            : change === '2'
+            ? 'الطلبات المكتملة'
+            : 'الطلبات الملغاة'}{' '}
+        </h2>
+      </div>
+  
+      {/* Buttons */}
+      <div className="col-span-8 py-6 w-full">
+        <div className="flex items-center text-center justify-start gap-4">
+          {['0', '2', '3'].map((stateId) => (
+            <div
+              key={stateId}
+              className={`w-48 p-3 rounded-lg shadow-md border ${
+                change === stateId
+                  ? 'bg-red-500 text-white'
+                  : 'bg-gray-100 text-gray-500'
+              }`}
+            >
+              <button
+                onClick={() => handleStateChange(stateId)}
+                className="font-semibold"
+              >
+                {stateId === '0'
+                  ? 'طلبات قيد التنفيذ'
+                  : stateId === '2'
+                  ? 'طلبات اكتملت'
+                  : 'طلبات تم الغاؤها'}
+              </button>
             </div>
-            <h2>{orders.customer_name}</h2>
+          ))}
         </div>
-
-        {/* الطلبات */}
-        {loading && <p>جاري تحميل البيانات...</p>}
-        {error && <p className="text-red-500">حدث خطأ: {error}</p>}
-        {Array.isArray(orders) && orders.length > 0 ? (
-        orders.map((order) => (
-        <div
+      </div>
+  
+      {/* الطلبات */}
+      {/* {loading && <p>جاري تحميل البيانات...</p>} */}
+      {error && <p className="text-red-500">حدث خطأ: {error}</p>}
+      {orders.data?.length > 0 ? (
+        orders.data.map((order) => (
+          <div
             key={order.id}
-            className="w-96 sm:w-full font-bold py-2 col-span-10 border mb-3 shadow shadow-md border-1 border-gray-100 rounded-md"
-        >
-            <div className="grid grid-cols-1 sm:grid-cols-8 md:grid-cols-10 gap-2">
+            className="col-span-8 bg-white shadow-md rounded-lg p-4 mb-4"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+              {/* صورة المنتج */}
+              <div className="col-span-2 flex justify-center items-center">
                 <img
-                    className="h-22 col-span-1 px-2 rounded-md"
-                    src={order.imgproduct}
-                    alt={order.customer_name}
+                  src={order.user.image}
+                  alt={order.customer_name}
+                  className="w-20 h-15 rounded-md object-cover"
                 />
-                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
-                    <h2
-                        className={`${
-                            order.state1 === 'red'
-                                ? 'text-[#C54442]'
-                                : order.state1 === 'green'
-                                ? 'text-[#01B051]'
-                                : 'text-black'
-                        }`}
-                    >
-                    </h2>
-                    <span>{order.section}</span>
+              </div>
+  
+            
+              {/* تفاصيل العميل */}
+              <div className="col-span-3 flex flex-col justify-center">
+                <h2 className="text-gray-700 font-bold">المشتري</h2>
+                <div className="flex items-center gap-2">
+                 
+                  <span className="text-gray-600">{order.customer_name}</span>
                 </div>
-                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
-                    <h2>الاسم </h2>
-                    <div>
-                        <img src={order.orderimg} alt="Order" />
-                        <span>{order.customer_name}</span>
-                    </div>
-                </div>
-
-                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
-                    <h2>العنوان</h2>
-                    <span>{order.street}</span>
-                </div>
-
-                <div className="flex flex-col col-span-3 md:col-span-2 bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
-                    <h2>السعر</h2>
-                    <span>{order.order_total_price}</span>
-                </div>
-
-                <div className="flex flex-col col-span-3 md:col-span-2 w-full bg-gray-200 p-2 rounded-md md:bg-white md:p-0 items-start gap-y-2">
-                    <h2>حالة الطلب</h2>
-                    <span
-                        className={`w-40 md:w-full text-white text-center rounded-md p-1 font-bold ${
-                            order.state1 === 'red'
-                                ? 'bg-[#C54442]'
-                                : order.state1 === 'green'
-                                ? 'bg-[#01B051]'
-                                : 'bg-black'
-                        }`}
-                    >
-                        {order.state1 === 'red'
-                            ? 'قيد التنفيذ'
-                            : order.state1 === 'green'
-                            ? 'اكتملت'
-                            : 'تم الغاؤها'}
-                    </span>
-                </div>
-                <div className="col-span-3 md:col-span-1 px-10">
-                    <button>
-                        <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </button>
-                </div>
+              </div>
+  
+              {/* العنوان */}
+              <div className="col-span-2 flex flex-col justify-center">
+                <h2 className="text-gray-700 font-bold">العنوان</h2>
+                <span className="text-gray-500">{order.town.name}</span>
+              </div>
+  
+              {/* السعر */}
+              <div className="col-span-2 flex flex-col justify-center">
+                <h2 className="text-gray-700 font-bold">السعر</h2>
+                <span className="text-gray-500">{order.order_total_price} ريال</span>
+              </div>
+  
+              {/* حالة الطلب */}
+              <div className="col-span-2 flex flex-col justify-center items-center">
+                <h2 className="text-gray-700 font-bold">حالة الطلب</h2>
+                <span
+                  className={`text-white text-center px-4 py-2 rounded-md font-semibold ${
+                    order.status === 'pending'
+                      ? 'bg-red-500'
+                      : 'bg-green-500'
+                    //    'bg-black'
+                  }`}
+                >
+                  {order.status}
+                </span>
+              </div>
+  
+              {/* زر الخيارات */}
+              <div className="col-span-1 flex justify-center items-center">
+                <button className="text-gray-500 hover:text-gray-700">
+                  <FontAwesomeIcon icon={faEllipsisVertical} />
+                </button>
+              </div>
             </div>
-        </div>
-    ))
-) : (
-    <p className="text-center text-gray-500">لا توجد طلبات حالياً</p>
-)}
-
+          </div>
+        ))
+      ) : (
+        <p className="col-span-8 text-center text-gray-500">
+          لا توجد طلبات حالياً
+        </p>
+      )}
     </div>
-);
+  );
+  
 };
 
-
-// const ThreeDotsIcon = () => {
-//     return (
-//         <div >
-//             <FontAwesomeIcon icon={faEllipsisVertical} size="2x" />
-//         </div>
-//     );
-// };
 
 
 Payingdata.propTypes = {

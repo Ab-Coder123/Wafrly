@@ -12,6 +12,7 @@ const UserAccounts = () => {
   const { accounts, loading, error } = useSelector(
     (state) => state.UserAccounts
   );
+  console.log(accounts);
 
   useEffect(() => {
     dispatch(fetchUserAccounts());
@@ -41,7 +42,7 @@ const UserAccounts = () => {
       <div className="space-y-6">
         {accounts?.map((account, index) => (
           <div
-            key={account.id}
+            key={index}
             className="border border-gray-300 p-4 rounded-md shadow-sm hover:shadow-lg transition-shadow bg-gray-50"
           >
             <div className="flex justify-between items-center mb-2">
@@ -52,15 +53,15 @@ const UserAccounts = () => {
             </div>
             <p>
               <span className="font-semibold text-gray-700">البنك:</span>{" "}
-              {account.name}
+              {account.child_payment_method.name}
             </p>
             <p>
               <span className="font-semibold text-gray-700">الفرع:</span>{" "}
-              {account.status}
+              {account.child_payment_method.status}
             </p>
             <p>
               <span className="font-semibold text-gray-700">رقم الحساب:</span>{" "}
-              {account.number}
+              {account.child_payment_method.number}
             </p>
           </div>
         ))}

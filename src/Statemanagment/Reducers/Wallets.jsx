@@ -2,12 +2,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchUserAccounts  = createAsyncThunk(
-    'accounts/fetchUserAccounts',
-    async (_, { rejectWithValue }) => {
+export const fetchWallets  = createAsyncThunk(
+    'wallets/fetchWallets',
+    async (Walltstoken, { rejectWithValue }) => {
       try {
         // إجراء الطلب باستخدام axios
-        const response = await axios.get('https://Admin.afirly.net/api/usreAccounts', {
+        const response = await axios.get(`https://Admin.afirly.net/api/wallets?page=${Walltstoken}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json",
@@ -28,10 +28,10 @@ export const fetchUserAccounts  = createAsyncThunk(
     }
   );
 
-const accountsSlice = createSlice({
-  name: 'accounts',
+const walletsSlice = createSlice({
+  name: 'wallets',
   initialState: {
-    accounts: [],
+    wallets: [],
     loading: false,
     error: null,
   },
@@ -44,7 +44,7 @@ const accountsSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchUserAccounts.fulfilled, (state, action) => {
-        state.accounts = action.payload;
+        state.wallets = action.payload;
         state.loading = false;
         console.log('action' , action.payload);
       })
@@ -55,4 +55,4 @@ const accountsSlice = createSlice({
   },
 });
 
-export default accountsSlice.reducer;
+export default walletsSlice.reducer;

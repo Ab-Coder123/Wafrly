@@ -44,11 +44,41 @@ export const fetchMainPaymentMethods = createAsyncThunk(
     }
   );
 
+
+
+  export const fetchpostAccountbtn = createAsyncThunk(
+    'postpaymentMethods/fetchpostAccountbtn',
+      // بناء الرابط مع الـ query parameters
+      async (formdata, { rejectWithValue }) => {
+        console.log('formdata',formdata);
+        try {
+          const response = await axios.post(
+            'https://Admin.afirly.net/api/accounts', formdata , 
+            
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          return response.data // Assuming it returns an array of banks
+        } catch (error) {
+          return rejectWithValue(error.response?.data || error.message);
+        }
+      } // Assuming it returns an array of payment methods
+  );
+
+
+
+  
+
 const paymentMethodsSlice = createSlice({
   name: 'paymentMethods',
   initialState: {
     mainMethods: [],
     childMethods: [],
+    postMethod : [] ,
     loading: false,
     error: null,
   },
@@ -80,8 +110,25 @@ const paymentMethodsSlice = createSlice({
       .addCase(fetchChildPaymentMethods.rejected, (state, action) => {
         state.error = action.error.message;
         state.loading = false;
-      });
+      })
+
+      // postaccount 
+      .addCase(fetchpostAccountbtn.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+
+      .addCase(fetchpostAccountbtn.fulfilled, (state, action) => {
+        state.postMethod = action.payload;
+        state.loading = false;
+      })
+
+      .addCase(fetchpostAccountbtn.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loading = false;
+      })
   },
+
 });
 
 export default paymentMethodsSlice.reducer;

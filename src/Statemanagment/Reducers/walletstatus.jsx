@@ -2,18 +2,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // تعريف thunk لجلب بيانات خطة العميل بناءً على الـ Token
-export const fetchPlans = createAsyncThunk(
-  'plans/fetchPlans',
-  async (subscrip, { rejectWithValue }) => {
+export const fetchstatus = createAsyncThunk(
+  'status/fetchstatus',
+  async (statusid, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`https://Admin.afirly.net/api/plans?=${subscrip}`, {
+      const response = await axios.get(`https://Admin.afirly.net/api/wallets/status?=${statusid}`,  {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
         },
       });
       console.log(response.data);
-      return response.data; // بيانات العميل من الـ API
+      return response.data.data; // بيانات العميل من الـ API
     } catch (error) {
       return rejectWithValue(error.response?.data || 'حدث خطأ ما'); // معالجة الخطأ
     }
@@ -21,29 +21,29 @@ export const fetchPlans = createAsyncThunk(
 );
 
 // إنشاء Slice
-const plansSlice = createSlice({
+const statusSlice = createSlice({
   name: 'plans',
   initialState: {
-    plans: {}, // تخزين بيانات خطة العميل هنا
+    statuswallet: {}, // تخزين بيانات خطة العميل هنا
     status: 'idle', // idle, loading, succeeded, failed
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPlans.pending, (state) => {
+      .addCase(fetchstatus.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
-      .addCase(fetchPlans.fulfilled, (state, action) => {
+      .addCase(fetchstatus.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.plans = action.payload.data; // بيانات العميل
+        state.statuswallet = action.payload.data; // بيانات العميل
       })
-      .addCase(fetchPlans.rejected, (state, action) => {
+      .addCase(fetchstatus.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
       });
   },
 });
 
-export default plansSlice.reducer;
+export default statusSlice.reducer;

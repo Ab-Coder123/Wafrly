@@ -9,13 +9,14 @@ import Footer from '../../components/Footer/Footer';
 import img1 from '../../assets/Images/New folder/logo (1).png'
 import imgmanual from '../../assets/Images/New folder/pngtree-online-transfer-money-with-mobile-banking-design-concept-vector-illustration-png-image_2158421.jpg'
 import { Link, useLocation } from 'react-router-dom';
-
-
+import { fetchUserAccounts } from "../../Statemanagment/Reducers/UserAccSlice";
+import { fetchstatus } from "../../Statemanagment/Reducers/walletstatus";
 
 export const Payingdata = ({ PayingdataProp }) => {
     const dispatch = useDispatch();
     const location = useLocation();
-    const { accountDetails, error, loading } = useSelector((state) => state.account);
+    const { accountDetails, error, loading } = useSelector((state) => state.UserAccounts);
+
 
     useEffect(() => {
         if (!accountDetails || Object.keys(accountDetails).length === 0) {
@@ -27,6 +28,7 @@ export const Payingdata = ({ PayingdataProp }) => {
         dispatch(fetchLogout());
         dispatch(clearUser());
     };
+
 
 
 
@@ -253,15 +255,39 @@ const Payingdata2 = ({ PayingdataProp2 }) => {
 
 // طرق الدفع الرئيسيه
 
-const Optiondata = ({ Optdataprop }) => {
+const Optiondata = () => {
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [selectedOption, setSelectedOption] = useState(""); // حالة لتخزين الخيار المختار
+    const { accounts } = useSelector(
+        (state) => state.UserAccounts
+    );
+    console.log(accounts);
 
     // دالة لتغيير الحالة عند اختيار عنصر من القائمة
     const handleSelectChange = (e) => {
         const value = e.target.value;
         setSelectedOption(value); // تحديث الخيار المختار
         setShow(true); // دايماً نعرض الـ div عند تغيير الخيار
+        dispatch(fetchUserAccounts()).then((res) => {
+            console.log(res.payload.message);
+            if (res.payload.message === 'تم اضافة الحساب بنجاح') {
+                toast.success("تم إضافة الحساب بنجاح!", {
+                    position: "top-center",
+                    autoClose: 2000,
+                });
+
+                setTimeout(() => {
+                    // navigate("/modules/AccoutsUser/AccUse");
+                }, 2000);
+
+            } else {
+                toast.error("يرجي المحاوله مره اخري ", {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 2000,
+                });
+            }
+        });
     };
 
     return (
@@ -273,10 +299,12 @@ const Optiondata = ({ Optdataprop }) => {
                     id=""
                     onChange={handleSelectChange} // نضيف حدث onChange للـ select
                 >
-                    <option>اكثر الطرق دفع</option>
-                    {Optdataprop.map((optdata) => (
-                        <option key={optdata.opt} value={optdata.opt}>
-                            {optdata.opt}
+                    <option className="font-bold text-[#bb110e]">
+                        <h2 className="font-bold text-[#bb110e]">اختر حسابا</h2>
+                    </option>
+                    {accounts?.map((account) => (
+                        <option >
+                            {account.child_payment_method.number}
                         </option>
                     ))}
                 </select>
@@ -289,15 +317,14 @@ const Optiondata = ({ Optdataprop }) => {
                             <h2 className='font-bold text-[#bb110e]'>طرق الدفع الفرعيه لـ {selectedOption}</h2> {/* عرض الخيار المختار */}
                         </div>
 
-                        <select
+                        <h2
                             name=""
                             className='cursor-pointer  rounded-md px-3 w-full p-2 focus:border-none shadow-md'
                             id=""
                             onChange={handleSelectChange} // نضيف حدث onChange للـ select
-                        >
-                            <option>اكثر الطرق دفع</option>
-                            <Optionpaybranchs Optdataprops={Optionpaybranch} />
-                        </select>
+
+                        >المبلغ ال مراد سحبه
+                        </h2>
 
                         {show && (
                             <div>
@@ -307,24 +334,18 @@ const Optiondata = ({ Optdataprop }) => {
                                         <input type="number" className='bg-gray-200 shadow-md border w-56  p-2 rounded-md' placeholder='0' />
 
                                     </div>
-                                    <div>
-                                        <label htmlFor=""></label>
-                                        <input type="tel" className='bg-gray-200 shadow-md borde  w-56 p-2 rounded-md ' placeholder='+20' />
-
-                                    </div>
-
                                 </form>
                             </div>
                         )
 
                         }
-
                     </div>
 
 
 
 
                 )}
+
             </div>
         </>
     );
@@ -504,23 +525,31 @@ const OptionDepositspayment = () => {
 
 
 
-const Optionpaybranchs = ({ Optdataprops }) => {
-    return (
-        <>
-            {Optdataprops.map((optdatabranch) => (
-                <option key={optdatabranch.opt2} value={optdatabranch.opt2}>
-                    {optdatabranch.opt2}
-                </option>
-            ))}
-        </>
-    );
-}
+// const Optionpaybranchs = ({ Optdataprops }) => {
+//     return (
+//         <>
+//             {Optdataprops.map((optdatabranch) => (
+//                 <option key={optdatabranch.opt2} value={optdatabranch.opt2}>
+//                     {optdatabranch.opt2}
+//                 </option>
+//             ))}
+//         </>
+//     );
+// }
 
 
 
 
 
 const Payingdata3 = ({ PayingdataProp3 }) => {
+    const dispatch = useDispatch();
+    // const [ststus , setstatus] =useState('pending')
+    const { statuswallet, error, loading } = useSelector((state) => state.statuswallet);
+        console.log(statuswallet);
+    useEffect(() => {
+        dispatch(fetchstatus());
+    }, [dispatch]);
+
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 space-y-2">
             <div className=" col-span-10 flex flex-row justify-start gap-4">
@@ -529,14 +558,15 @@ const Payingdata3 = ({ PayingdataProp3 }) => {
                     آخر العمليات
                 </h2>
             </div>
+            {/* {statuswallet.
+
+            } */}
             {PayingdataProp3.map((paydata3) => {
                 return (
 
                     <>
 
                         <div key={paydata3.id} className=" w-full col-span-10 grid grid-cols-10 sm:grid-cols-10 md:grid-cols-12 gap-5 bg-white shadow-md p-5 rounded-lg">
-
-
                             {/* Right Section: Operation Image */}
                             <div className={` col-span-2 lg:col-span-2 w-fit rounded-lg flex items-center lg:items-center ${paydata3.changebg === 'red' ? 'bg-gray-800' : 'bg-[#C54442]'}`}>
                                 <img src={paydata3.imgoperation} alt="operation icon" className=" " />
@@ -557,6 +587,9 @@ const Payingdata3 = ({ PayingdataProp3 }) => {
                                     {paydata3.change}
                                 </span>
                             </div>
+
+                        </div>
+                        <div>
 
                         </div>
                     </>

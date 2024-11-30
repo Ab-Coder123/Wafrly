@@ -14,24 +14,10 @@ import { fetchPlans } from '../../Statemanagment/Reducers/SubscripeSlice';
 const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
     const dispatch = useDispatch();
     const { plans, status, error } = useSelector((state) => state.plans);
-
+    console.log(plans?.data[0]);
     useEffect(() => {
         dispatch(fetchPlans()); // استدعاء جلب البيانات عند التحميل
     }, [dispatch]);
-
-    // if (status === 'loading' || status === 'failed') {
-    //     return (
-    //         <div>
-    //             {status === 'loading' && <p>جاري التحميل...</p>}
-    //             {status === 'failed' && <p>حدث خطأ: {error}</p>}
-    //         </div>
-    //     );
-    // }
-
-    const description = plans.data?.description || "لا توجد بيانات";
-    const monthlyPrice = plans.data?.monthly_price || "غير متوفر";
-    const yearlyPrice = plans.data?.yearly_price || "غير متوفر";
-
 
     const [balance, setBalance] = useState(50); // القيمة الحالية للمحفظة (مثال)
     const UseBouqout1 = UseBouqoutdataProp.find((UseBouqoutprop) => UseBouqoutprop.id === '1');
@@ -74,11 +60,11 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                             {/* line */}
                             <div className='mb-5 w-full h-0.5 bg-gray-300'></div>
                             <div className='flex flex-col gap-y-5'>
-                                <p className='text-gray-400'>                         {plans.data?.map((plan) => {
-                                    <span className='text-[#C54442] font-bold'>{plan.description}ر.ل / شهريا </span>
-                                })
+                                <p className='text-gray-400'>
+                                    {/* <span className='text-[#C54442] font-bold'>{plans?.data[0].description}ر.ل / شهريا </span> */}
+                                    <span className='text-[#C54442] font-bold'>{plans?.data[0].description}</span>
 
-                                }</p>
+                                </p>
                                 <div className=''>
                                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-10 gap-3 items-center'>
                                         {/* progress */}
@@ -124,12 +110,9 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                                     <img src={UseBouqout2.cardimg1} alt="" className='h-7' />
                                     <h2 className='font-bold text-black text-l'>{UseBouqout2.cardhead1}</h2>
                                 </div>
-                                <div className='col-span-2 text-center'>
-                                    {plans.data?.map((plan) => {
-                                        <span className='text-[#C54442] font-bold'>{plan.monthly_price}ر.ل / شهريا </span>
-                                    })
-
-                                    }
+                                <div className='col-span-2 flex items-start justify-start gap-1 text-center'>
+                                        <span className='text-[#C54442] font-extrabold'>{plans?.data[0].monthly_price                                        }</span>
+                                        <span className=' font-bold'>ر.ل /سنويا </span>
                                 </div>
                             </div>
 
@@ -162,12 +145,9 @@ const UseBouqoutdata = ({ UseBouqoutdataProp }) => {
                                     <img src={UseBouqout2.cardimg2} alt="" className='h-7' />
                                     <h2 className='font-bold text-black text-l'>{UseBouqout2.cardhead2}</h2>
                                 </div>
-                                <div className='col-span-2 text-center'>
-                                    {plans.data?.map((plan) => {
-                                        <span className='text-[#C54442] font-bold'>{plan.yearly_price}ر.ل / شهريا </span>
-                                    })
-
-                                    }
+                                <div className='col-span-2 flex items-start justify-start gap-1 text-center'>
+                                        <span className='text-[#C54442] font-extrabold'>{plans?.data[0].yearly_price}</span>
+                                        <span className=' font-bold'>ر.ل /سنويا </span>
                                 </div>
                             </div>
 

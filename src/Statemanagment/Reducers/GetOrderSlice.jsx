@@ -10,7 +10,7 @@ export const fetchGetallOrder = createAsyncThunk(
     try {
       const response = await apiFetches.getallorders.allOrder(statusId); // استدعاء API مع statusId
       console.log(response);
-      return response.data;  // إرجاع البيانات المستلمة
+      return response.data.data  // إرجاع البيانات المستلمة
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);  // إرجاع الخطأ إذا حدث
     }
@@ -18,19 +18,19 @@ export const fetchGetallOrder = createAsyncThunk(
 );
 
 
-// export const fetchorderstatus = createAsyncThunk(
-//   'statusOrder/fetchorderstatus', // اسم الأكشن
-//   async (_, thunkAPI) => {
+export const fetchorderstatus = createAsyncThunk(
+  'statusOrder/fetchorderstatus', // اسم الأكشن
+  async (_, thunkAPI) => {
     
-//     try {
-//       const response = await apiFetches.orderStatus.Orderstatus(); // استدعاء API مع statusId
-//       console.log(response.data.data);
-//       return response.data;  // إرجاع البيانات المستلمة
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.response.data);  // إرجاع الخطأ إذا حدث
-//     }
-//   }
-// );
+    try {
+      const response = await apiFetches.orderStatus.Orderstatus(); // استدعاء API مع statusId
+      console.log(response.data.data);
+      return response.data;  // إرجاع البيانات المستلمة
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);  // إرجاع الخطأ إذا حدث
+    }
+  }
+);
 
 const getallorder = createSlice({
   name: 'allOrder',

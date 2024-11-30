@@ -12,8 +12,9 @@ import Order from '../Reducers/OrderSlice'
 import getallorder from '../Reducers/GetOrderSlice'
 import complainSlice from '../Reducers/Compilain' 
 import paymentMethodsSlice from '../Reducers/PostAccSlice'
-import accountsSlice from '../Reducers/AccountSlice'
+import accountsSlice from '../Reducers/UserAccSlice'
 import plansSlice from '../Reducers/SubscripeSlice'
+import statusSlice from '../Reducers/walletstatus'
 const store = configureStore({
   reducer: {
     login: loginReducer,
@@ -29,6 +30,7 @@ const store = configureStore({
     paymentMethods : paymentMethodsSlice ,
     UserAccounts : accountsSlice ,
     plans : plansSlice ,
+    statuswallet : statusSlice ,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -5,6 +5,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchMainPaymentMethods } from "../../Statemanagment/Reducers/PostAccSlice";
 import { fetchChildPaymentMethods } from "../../Statemanagment/Reducers/PostAccSlice";
+import { fetchpostAccountbtn } from "../../Statemanagment/Reducers/PostAccSlice";
+
 import img1 from '../../assets/Images/New folder/logo (1).png'
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -22,6 +24,7 @@ const PaymentMethods = () => {
   const [showAccountField, setShowAccountField] = useState(false);
   const [accountNumber, setAccountNumber] = useState("");
 
+console.log(accountNumber,selectedBank,selectedBranch);
   // Fetch main payment methods on mount
   useEffect(() => {
     dispatch(fetchMainPaymentMethods());
@@ -55,14 +58,34 @@ const PaymentMethods = () => {
   // Handle form submission
   const handleSubmit = () => {
     if (accountNumber.trim()) {
-      toast.success("تم إضافة الحساب بنجاح!", {
-        position: "top-center",
-        autoClose: 2000,
-      });
+      const dataSubmited=
+      {
+        "parent_method":selectedBank ,
+        "child_method":selectedBranch,
+        "number": accountNumber ,
+    }
+      dispatch(
+      fetchpostAccountbtn(dataSubmited)).then((res)=>{
+        console.log(res.payload.message);
+        if (res.payload.message==='تم اضافة الحساب بنجاح') {
+          
 
-      setTimeout(() => {
-        navigate("/modules/AccoutsUser/AccUse");
-      }, 2000);
+        toast.success("تم إضافة الحساب بنجاح!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+  
+        setTimeout(() => {
+          navigate("/modules/AccoutsUser/AccUse");
+        }, 2000);
+      } else {
+        toast.error("يرجي المحاوله مره اخري ", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+      }
+      })
+    
     } else {
       toast.error("يرجى إدخال رقم الحساب!", {
         position: toast.POSITION.TOP_CENTER,
@@ -93,13 +116,13 @@ const PaymentMethods = () => {
           className="block w-full p-2 mb-4 border rounded"
         >
           <option value="">Select Bank</option>
-          {mainMethods.data?.map((bank) => (
-            <option key={bank.id} value={bank.id}>
+          {mainMethods.data?.map((bank , index) => (
+            <option key={index} value={bank.id}>
               {bank.name}
             </option>
           ))}
         </select>
-
+ 
         {/* Child Select */}
         {selectedBank && (
           <select

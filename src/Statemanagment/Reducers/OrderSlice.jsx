@@ -8,7 +8,7 @@ export const fetchOrder = createAsyncThunk(
     try {
         const response = await apiFetches.Postorder.Order(Credentials); // تمرير البيانات
         console.log("Response data:", response.data);
-        return response.data; // إرجاع البيانات للـ Redux
+        return response.data// إرجاع البيانات للـ Redux
     } catch (error) {
         console.log("Error:", error.message);
         console.error("Error response:", error.response?.data);
